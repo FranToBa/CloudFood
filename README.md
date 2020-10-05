@@ -14,7 +14,7 @@ El objetivo es crear una API sobre comida de restaurantes, basada en la consulta
 
 ## Documentacion
 - [Elección del lenguaje](./docs/herramientas.md)
-- [Configuración de git](./docs/configuracion_inicial.md)
+- [Configuración incial de git](./docs/configuracion_inicial.md)
 
 ## Autor
 [Francisco Javier Torres Barea](https://github.com/FranToBa)
