@@ -12,7 +12,7 @@ El objetivo es crear una API sobre comida de restaurantes, basada en la consulta
 - BD: MySql
 
 
-## Documentacion
+## Documentación
 - [Elección del lenguaje](./docs/herramientas.md)
 - [Configuración incial de git](./docs/configuracion_inicial.md)
 - [Pasos seguidos](./docs/pasos.md)
@@ -21,9 +21,9 @@ El objetivo es crear una API sobre comida de restaurantes, basada en la consulta
 ## Progreso
 - [Carpeta de código del proyecto](./CloudFoodProject/src)
 - [Historias de usuario](https://github.com/FranToBa/CloudFood/issues)
-	- [HU01: consultar menu](https://github.com/FranToBa/CloudFood/issues/2)
+	- [HU01: consultar menú](https://github.com/FranToBa/CloudFood/issues/2)
 	- [HU02: dirección](https://github.com/FranToBa/CloudFood/issues/3)
-	- [HU03: consultar menú](https://github.com/FranToBa/CloudFood/issues/4)
+	- [HU03: pedido](https://github.com/FranToBa/CloudFood/issues/4)
 - Issues cerrados del hito 1
 	- [HU00: archivo iv.yuml](https://github.com/FranToBa/CloudFood/issues/1)
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
