@@ -6,7 +6,7 @@
 - Crear el repositorio.
 - Realizar fork del repositorio de la asignatura.
 - Realizar la [configuración inicial](./configuracion_inicial.md).
-- Modificación de mi repositorio con los ficheros [README.md](../README.me),[.gitignore](../.gitignore) y [LICENSE](../LICENSE).
+- Modificación de mi repositorio con los ficheros [README.md](../README.md), [.gitignore](../.gitignore) y [LICENSE](../LICENSE).
 - Modificar hito-0.md y PR.
 
 ## Hito 1
