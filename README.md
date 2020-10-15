@@ -25,7 +25,7 @@ El objetivo es crear una API sobre comida de restaurantes, basada en la consulta
 	- [HU02: dirección](https://github.com/FranToBa/CloudFood/issues/3)
 	- [HU03: pedido](https://github.com/FranToBa/CloudFood/issues/4)
 - Issues cerrados
-	- [HU00: archivo iv.yuml](https://github.com/FranToBa/CloudFood/issues/1)
+	- [Archivo iv.yaml](https://github.com/FranToBa/CloudFood/issues/1)
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
 	- [1](https://github.com/FranToBa/CloudFood/milestone/1)
 	- [2](https://github.com/FranToBa/CloudFood/milestone/2)
