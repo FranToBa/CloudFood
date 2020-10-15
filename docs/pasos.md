@@ -11,20 +11,12 @@
 
 ## Hito 1
 
-- Incluir archivo [iv.yaml](../iv.yaml)
-- Creación del [avance de código del proyecto](../CloudFoodProject/src).
-
-- Creación de los [issues e historias de usuario](https://github.com/FranToBa/CloudFood/issues).
-	- [HU01: consultar menu](https://github.com/FranToBa/CloudFood/issues/2)
-	- [HU02: dirección](https://github.com/FranToBa/CloudFood/issues/3)
-	- [HU03: pedido](https://github.com/FranToBa/CloudFood/issues/4)
-- Creación de los [milestones](https://github.com/FranToBa/CloudFood/milestones).
-	- [Hito1](https://github.com/FranToBa/CloudFood/milestone/1)
-	- [Hito2](https://github.com/FranToBa/CloudFood/milestone/2)
-	- [Hito3](https://github.com/FranToBa/CloudFood/milestone/3)
-- Cerrar issues correspondientes al hito 1
-	- [HU00: archivo iv.yuml](https://github.com/FranToBa/CloudFood/issues/1)
-
+- Lo primero que realicé fue algunos ajuste a mi readme, arreglando algunas cosas del hito anterior.
+- Crear los [milestones](https://github.com/FranToBa/CloudFood/milestones) de los hitos para establecer objetivos.
+- Crear [issues](https://github.com/FranToBa/CloudFood/issues/1) asociados a esos milestones.
+- Crear [historias de usuario](https://github.com/FranToBa/CloudFood/issues) que se deberan realizar.
+- Incluir archivo [iv.yaml](../iv.yaml).
+- Realización de avance de código en la carpeta [src](../src), en el que tendremos los ficheros de las clases.
 - Actualización del [README.md](../README.md), añadiendo los enlaces correspondientes a este hito.
 
 
