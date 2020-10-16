@@ -13,11 +13,23 @@
 
 - Lo primero que realicé fue algunos ajuste a mi readme, arreglando algunas cosas del hito anterior.
 - Crear los [milestones](https://github.com/FranToBa/CloudFood/milestones) de los hitos para establecer objetivos.
-- Crear [issues](https://github.com/FranToBa/CloudFood/issues/1) asociados a esos milestones.
 - Crear [historias de usuario](https://github.com/FranToBa/CloudFood/issues) que se deberan realizar.
+- Crear [issues](https://github.com/FranToBa/CloudFood/issues/1) asociados a los milestones.
 - Incluir archivo [iv.yaml](../iv.yaml).
 - Realización de avance de código en la carpeta [src](../src), en el que tendremos los ficheros de las clases.
 - Actualización del [README.md](../README.md), añadiendo los enlaces correspondientes a este hito.
+
+## Hito 2
+
+- Lo primero que realicé fue algunos ajuste a mi readme, arreglando algunas cosas del hito anterior (arreglar este fichero, pasos.md). _(Issue #5)_
+- Para empezar, busqué las herramientas que utilizaría (se pueden consultar en [herramientas](./herramientas).
+	- Actualicé mi versión de node porque estaba bastante desactualizada. Consulté [esta página](https://miracomosehace.com/instalar-actualizar-nodejs-ubuntu/).
+	- Después instalé Jest con el comando _npm install --save-dev jest_.
+- Creación de los tests, en los que comprobaré las funciones de la clase menu.js. _(Issue #6)_
+- Creación de la clase **menu.js**, en la que un usuario puede crear su menú, consultar los platos disponibles, actualizar su menú y consultar el menún seleccionado. _(Issue #7)_
+- Actualización del fichero [iv.yaml](../iv.yaml). _(Issue #8)_
+- Actualización del archivo de [herramientas](./herramientas). _(Issue #9)_
+- Actualización del [README.md](../README.md). _(Issue #10)_
 
 
 
