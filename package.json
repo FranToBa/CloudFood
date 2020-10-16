@@ -1,12 +1,26 @@
 {
-  "name": "CloudFood",
+  "name": "cloudfood",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Api sobre pedidos de comida",
+  "main": "src/menu.js",
+  "directories": {
+    "doc": "docs"
   },
-  "keywords": [],
+  "scripts": {
+    "starts": "node src/menu.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranToBa/CloudFood.git"
+  },
   "author": "Francisco Javier Torres Barea",
-  "license": "ISC"
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/FranToBa/CloudFood/issues"
+  },
+  "homepage": "https://github.com/FranToBa/CloudFood#readme",
+  "devDependencies": {
+    "jest": "^26.5.3"
+  }
 }
