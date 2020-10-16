@@ -36,7 +36,7 @@ Se puede consultar de manera más amplia en [Herramientas](./docs/herramientas.m
 ## Progreso
 - Carpeta de [código](./src) del pryecto
 	- Clase [menu.js](./src/menu.js)
-- [Carpeta de tests](./tests)
+- Carpeta de [tests](./tests)
 	- Test [menu.test.js](./tests/menu.test.js)
 
 - [Historias de usuario](https://github.com/FranToBa/CloudFood/issues)
