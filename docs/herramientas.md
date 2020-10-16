@@ -1,8 +1,10 @@
 ## Herramientas
 
+
 > ¿Por qué he elegido JavaScript?
 
 Conozco las bases de este lenguaje, por lo que me gustaría profundizar en él. Además es un lenguaje muy importante hoy en día y considero que manejarlo con destreza es necesario.
+
 
 > Gestor de paquetes / herramienta de construcción
 
@@ -15,6 +17,7 @@ Este archivo da una descripción detallada de tu proyecto.
 
 - Mas adelante, pasaré a usar Gulp, ya que en este hito era suficiente con las funcionalidades de npm.
 
+
 > Tests
 
 Para los test he utilizado la herramiento Jest, ya que hay mucha información sobre ella. Además, es fácil de combinar con npm.
@@ -22,6 +25,7 @@ Para los test he utilizado la herramiento Jest, ya que hay mucha información so
 ~~~
 $ npm install --save-dev jest
 ~~~
+
 
 > Base de datos, Sistema de log, Framework web
 
