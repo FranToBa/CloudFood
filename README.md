@@ -5,7 +5,7 @@
 
 ¿Por qué este proyecto? Por facilitar la tarea de los pedidos de comida actualmente, realizándolos de una manera sencilla y efectiva.
 
-El objetivo es crear una API sobre comida de restaurantes, basada en la consulta de los menús de tu restaurantes favoritos y reserva de los mismos, pudiendo aplicar filtros en base a lo que te apetezca comer. Podrás consultar menús completos, incluyendo priemr plato, segundo plato y postre. Cuando hayas seleccionado tu menú, podrás realizar el pedido y ¡a disfrutar!.
+El objetivo es crear una API sobre comida de restaurantes, basada en la consulta de los menús de tu restaurantes favoritos y reserva de los mismos, pudiendo aplicar filtros en base a lo que te apetezca comer. Podrás consultar menús completos, incluyendo primer plato, segundo plato y postre. Cuando hayas seleccionado tu menú, podrás realizar el pedido y ¡a disfrutar!.
 
 ## Instalación y tests
 Instalación de dependencias:
@@ -45,13 +45,10 @@ Se puede consultar de manera más amplia en [Herramientas](./docs/herramientas.m
 	- [HU03:](https://github.com/FranToBa/CloudFood/issues/4) pedido
 
 - Issues cerrados
-	-Issues [H1](https://github.com/FranToBa/CloudFood/milestone/1?closed=1)
-	-Issues [H2](https://github.com/FranToBa/CloudFood/milestone/2?closed=1)
+	- Issues [H1](https://github.com/FranToBa/CloudFood/milestone/1?closed=1)
+	- Issues [H2](https://github.com/FranToBa/CloudFood/milestone/2?closed=1)
 	   - 
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
-	- [H1](https://github.com/FranToBa/CloudFood/milestone/1)
-	- [H2](https://github.com/FranToBa/CloudFood/milestone/2)
-	- [H3](https://github.com/FranToBa/CloudFood/milestone/3)
 
 
 
