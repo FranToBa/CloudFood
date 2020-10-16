@@ -1,1 +1,4 @@
-entidad: src/cloudfood.js
+entidad: src/menu.js
+lenguaje: JavaScript
+test: tests/menu.test.js
+taskfile: package.json
