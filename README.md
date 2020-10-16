@@ -47,7 +47,7 @@ Se puede consultar de manera más amplia en [Herramientas](./docs/herramientas.m
 - Issues cerrados
 	- Issues [H1](https://github.com/FranToBa/CloudFood/milestone/1?closed=1)
 	- Issues [H2](https://github.com/FranToBa/CloudFood/milestone/2?closed=1)
-	   - 
+	 
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
 
 
