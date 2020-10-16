@@ -22,13 +22,13 @@
 ## Hito 2
 
 - Lo primero que realicé fue algunos ajuste a mi readme, arreglando algunas cosas del hito anterior (arreglar este fichero, pasos.md). _(Issue #5)_
-- Para empezar, busqué las herramientas que utilizaría (se pueden consultar en [herramientas](./herramientas).
+- Para empezar, busqué las herramientas que utilizaría (se pueden consultar en [herramientas](./herramientas.md).
 	- Actualicé mi versión de node porque estaba bastante desactualizada. Consulté [esta página](https://miracomosehace.com/instalar-actualizar-nodejs-ubuntu/).
 	- Después instalé Jest con el comando _npm install --save-dev jest_.
 - Creación de los tests, en los que comprobaré las funciones de la clase menu.js. _(Issue #6)_
 - Creación de la clase **menu.js**, en la que un usuario puede crear su menú, consultar los platos disponibles, actualizar su menú y consultar el menún seleccionado. _(Issue #7)_
 - Actualización del fichero [iv.yaml](../iv.yaml). _(Issue #8)_
-- Actualización del archivo de [herramientas](./herramientas). _(Issue #9)_
+- Actualización del archivo de [herramientas](./herramientas.md). _(Issue #9)_
 - Actualización del [README.md](../README.md). _(Issue #10)_
 
 
