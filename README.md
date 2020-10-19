@@ -17,14 +17,14 @@ Ejecución de tests:
 $ npm test
 ~~~
 
-## Herramientas
+## Justificación de Herramientas
 - Lenguaje: JavaScript
-- Gestor de paquetes/herramienta de construcción: npm
-- Tests: Jest
 - BD: MySql
 - Log: Winston
+Para mas información sobre las herramientas anteriores acceder a [herramientas](./docs/herramientas.md)
 
-Se puede consultar de manera más amplia en [Herramientas](./docs/herramientas.md).
+- Gestor de paquetes/herramienta de construcción: **npm**. Se puede consultar la justificación individualizada en [npm.md](./docs/npm.md)
+- Tests: **Jest**. Se puede consultar la justificación individualizada en [jest.md](./docs/jest.md)
 
 
 ## Documentación
