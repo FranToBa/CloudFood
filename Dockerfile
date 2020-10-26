@@ -18,5 +18,8 @@ RUN adduser -D menu
 VOLUME /test
 USER menu
 WORKDIR /test
+
+ENV PATH=/proyecto/node_modules/.bin:$PATH
+
 CMD npm run test
 
