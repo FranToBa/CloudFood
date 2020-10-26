@@ -1,9 +1,9 @@
 //Simulamos enums sobre los tipos de platos
-const PLATOS1 = ['Sopa','Pasta','Ensalada']
-Object.freeze(PLATOS1);
+const ENTRANTES = ['Sopa','Pasta','Ensalada']
+Object.freeze(ENTRANTES);
 
-const PLATOS2 = ['Pescado','Carne','Arroz']
-Object.freeze(PLATOS2);
+const PLATOS = ['Pescado','Carne','Arroz']
+Object.freeze(PLATOS);
 
 
 const POSTRES = ['Tarta','Brownie','Fruta']
@@ -12,23 +12,23 @@ Object.freeze(POSTRES);
 class Menu {
 
     /*Constructor en el que comprobamos que se seleccionan platos disponibles*/
-    constructor(plato1, plato2, postre){
+    constructor(entrante, plato, postre){
 
-	if(PLATOS1.includes(plato1)){
-		this.plato1 = plato1;
+	if(ENTRANTES.includes(entrante)){
+		this.entrante = entrante;
 	}else{	
-		this.platos1 = null;
-		this.plato2 = null;
+		this.entrante = null;
+		this.plato = null;
 		this.postre = null;
-		throw new Error("Primer plato no disponible");
+		throw new Error("Entrante no disponible");
 	}
 
-	if(PLATOS2.includes(plato2)){
-		this.plato2 = plato2;
+	if(PLATOS.includes(plato)){
+		this.plato = plato;
 	}else{	
-		this.plato2 = null;
+		this.plato = null;
 		this.postre = null;
-		throw new Error("Segundo plato no disponible");
+		throw new Error("Plato principal no disponible");
 	}
 
 	if(POSTRES.includes(postre)){
@@ -40,22 +40,22 @@ class Menu {
     }
 
     
-    /* Get de los primeros platos disponibles */
-    mostrarPrimerosPlatos(){
-	var platos1 = new Array();
-	for(var i=0;i<PLATOS1.length;i++){
-		platos1.push(PLATOS1[i]);
+    /* Get de los entrantes disponibles */
+    mostrarEntrantes(){
+	var entrantes = new Array();
+	for(var i=0;i<ENTRANTES.length;i++){
+		entrantes.push(ENTRANTES[i]);
 	}
-	return platos1;
+	return entrantes;
     }
 
     /* Get de los segundos platos disponibles */
-    mostrarSegundosPlatos(){
-	var platos2 = new Array();
-	for(var i=0;i<PLATOS2.length;i++){
-		platos2.push(PLATOS2[i]);
+    mostrarPlatos(){
+	var platos = new Array();
+	for(var i=0;i<PLATOS.length;i++){
+		platos.push(PLATOS[i]);
 	}
-	return platos2;
+	return platos;
     }
 
    /* Get de los postres disponibles */
@@ -68,19 +68,19 @@ class Menu {
     }
 
    //Modificar platos comprobando si están disponibles
-    modificarPrimerPlato(plato1){
-	if(PLATOS1.includes(plato1)){
-		this.plato1 = plato1;
+    modificarEntrante(entrante){
+	if(ENTRANTES.includes(entrante)){
+		this.entrante = entrante;
 	}else{
-		throw new Error("Primer plato no disponible");
+		throw new Error("Entrante no disponible");
 	}
     }
 
-    modificarSegundoPlato(plato2){
-	if(PLATOS2.includes(plato2)){
-		this.plato2 = plato2;
+    modificarPlato(plato){
+	if(PLATOS.includes(plato)){
+		this.plato = plato;
 	}else{
-		throw new Error("Segundo plato no disponible");
+		throw new Error("Plato principal no disponible");
 	}
     }
 
@@ -95,8 +95,8 @@ class Menu {
     //Mostrar el menu completo
     mostrarMenuSeleccionado(){
 	var menuSeleccionado = new Array();
-	if(this.plato1!=null && this.plato2!=null && this.postre!=null){		
-		menuSeleccionado.push("PRIMER PLATO: "+this.plato1+"\n"+"SEGUNDO PLATO: "+this.plato2+"\n"+"POSTRE: "+this.postre);
+	if(this.entrante!=null && this.plato!=null && this.postre!=null){		
+		menuSeleccionado.push("ENTRANTE: "+this.entrante+"\n"+"PLATO PRINCIPAL: "+this.plato+"\n"+"POSTRE: "+this.postre);
 	}else{
 		throw new Error("El menu no esta completo");
 		
@@ -105,6 +105,19 @@ class Menu {
 	return menuSeleccionado;
 		
     }
+
+    realizarPedido(direccion){
+	var pedido = new Array();
+	if(this.entrante!=null && this.plato!=null && this.postre!=null){		
+		pedido.push("ENTRANTE: "+this.entrante+"\n"+"PLATO PRINCIPAL: "+this.plato+"\n"+"POSTRE: "+this.postre +"\n"+"DIRECCION: "+ direccion);
+	}else{
+		throw new Error("El menu no esta completo o la dirección no ha sido introducida");
+		
+	}
+
+	return pedido;
+     }
+	
 	
 }
 
