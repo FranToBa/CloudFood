@@ -6,8 +6,8 @@ describe("Probando la clase menu.js", () => {
 
   describe("Testeando constructor", () =>{
     test("Probando la construcción correcta del objeto", () => {
-      expect(menu.plato1).toBe("Sopa");
-      expect(menu.plato2).toBe("Pescado");
+      expect(menu.entrante).toBe("Sopa");
+      expect(menu.plato).toBe("Pescado");
       expect(menu.postre).toBe("Tarta");
     });
 
@@ -17,18 +17,18 @@ describe("Probando la clase menu.js", () => {
     });
   });
  
-  describe("Testeando mostrarPrimerosPlatos", () =>{
-    test("Probando la visualización de primeros platos", () => {
-      var platos = ["Sopa","Pasta","Ensalada"]
-      expect(menu.mostrarPrimerosPlatos()).toStrictEqual(platos);
+  describe("Testeando mostrarEntrantes", () =>{
+    test("Probando la visualización de entrantes", () => {
+      var entrantes = ["Sopa","Pasta","Ensalada"]
+      expect(menu.mostrarEntrantes()).toStrictEqual(entrantes);
     });
   });
 
 
-  describe("Testeando mostrarSegundosPlatos", () =>{
-    test("Probando la visualización de segundos platos", () => {
+  describe("Testeando mostrarPlatos", () =>{
+    test("Probando la visualización de platos", () => {
       var platos = ["Pescado","Carne","Arroz"]
-      expect(menu.mostrarSegundosPlatos()).toStrictEqual(platos);
+      expect(menu.mostrarPlatos()).toStrictEqual(platos);
     });
   });
 
@@ -39,31 +39,31 @@ describe("Probando la clase menu.js", () => {
     });
   });
 
-  describe("Testeando modificarPrimerPlato", () =>{
-    test("Probando que se modifica el primer plato", () => {
-      var plato = "Pasta";     
-      menu.modificarPrimerPlato(plato);
-      expect(menu.plato1).toBe("Pasta");
+  describe("Testeando modificarEntrantes", () =>{
+    test("Probando que se modifica el entrante", () => {
+      var entrante = "Pasta";     
+      menu.modificarEntrante(entrante);
+      expect(menu.entrante).toBe("Pasta");
     });
 
     test("Probando que da error si el plato no esta disponible", () => {
       var plato = "Jamon";     
-      var error1 = () => menu.modificarPrimerPlato(plato);
+      var error1 = () => menu.modificarEntrante(plato);
       expect(error1).toThrow();
     });
 
   });
 
   describe("Testeando modificarSegundoPlato", () =>{
-    test("Probando que se modifica el segundo plato", () => {
+    test("Probando que se modifica el plato", () => {
       var plato = "Carne";     
-      menu.modificarSegundoPlato(plato);
-      expect(menu.plato2).toBe("Carne");
+      menu.modificarPlato(plato);
+      expect(menu.plato).toBe("Carne");
     });
 
     test("Probando que da error si el plato no esta disponible", () => {
       var plato = "Pizza";     
-      var error2 = () => menu.modificarSegundoPlato(plato);
+      var error2 = () => menu.modificarPlato(plato);
       expect(error2).toThrow();
     });
 
@@ -88,14 +88,26 @@ describe("Probando la clase menu.js", () => {
   describe("Testeando mostrarMenuSeleccionado", () =>{
     test("Probando la visualización del menú seleccionado (y modificado anteriormente)", () => {
       var menufinal= new Array();
-      menufinal.push("PRIMER PLATO: "+"Pasta"+"\n"+"SEGUNDO PLATO: "+"Carne"+"\n"+"POSTRE: "+"Fruta");
+      menufinal.push("ENTRANTE: "+"Pasta"+"\n"+"PLATO PRINCIPAL: "+"Carne"+"\n"+"POSTRE: "+"Fruta");
       expect(menu.mostrarMenuSeleccionado()).toStrictEqual(menufinal);
     });
 
     test("Probando el error si el menu no esta completo", () => {
-      menu.plato1=null;
+      menu.entrante=null;
       var e = () => menu.mostrarMenuSeleccionado();
       expect(e).toThrow();
+    });
+
+
+  });
+
+
+  describe("Testeando realizarPedido", () =>{
+    test("Probando la visualización del pedido realizado)", () => {
+      menu.entrante="Pasta";
+      var pedido= new Array();
+      pedido.push("ENTRANTE: "+"Pasta"+"\n"+"PLATO PRINCIPAL: "+"Carne"+"\n"+"POSTRE: "+"Fruta"+"\n"+"DIRECCION: "+"Calle Antonio 13");
+      expect(menu.realizarPedido("Calle Antonio 13")).toStrictEqual(pedido);
     });
 
 
