@@ -49,7 +49,7 @@ class Menu {
 	return entrantes;
     }
 
-    /* Get de los segundos platos disponibles */
+    /* Get de los platos disponibles */
     mostrarPlatos(){
 	var platos = new Array();
 	for(var i=0;i<PLATOS.length;i++){
