@@ -31,5 +31,14 @@
 - Actualización del archivo de [herramientas](./herramientas.md). _(Issue #9)_
 - Actualización del [README.md](../README.md). _(Issue #10)_
 
+## Hito 3
+
+- Familiarización con docker. [Ejercicios de autoevaluación](https://github.com/FranToBa/Autoevaluacion-IV/blob/main/docs/s4.md).
+- Elección del contenedor base y justificación. Enlazado en el README.
+- Creación del archivo Dockerfile.
+- Creación de usuario en DockerHub y automatización de actualizaciones.
+- Subida del contenedor a GitHub Container Registry.
+- Se pueden consultar estos pasos de forma detallada en el [README](../README.md).
+
 
 
