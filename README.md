@@ -27,8 +27,8 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 
 - Justificación del [contenedor base](./docs/imagendocker.md).
 - [Dockerfile](./Dockerfile) siguiendo [buenas prácticas](./docs/buenaspracticas.md).
-- Contenedor subido a [DockerHub](https://hub.docker.com/r/frantoba/cloudfood) y [documentación de la actualización automática](actautomatica_docker.md).
-- [Documentación de GitHub Container Registry](ghcr.md). Puede acceder a mi contenedor de GHCR [aquí](https://github.com/users/FranToBa/packages/container/package/cloudfood).
+- Contenedor subido a [DockerHub](https://hub.docker.com/r/frantoba/cloudfood) y [documentación de la actualización automática](./docs/actautomatica_docker.md).
+- [Documentación de GitHub Container Registry](./docs/ghcr.md). Puede acceder a mi contenedor de GHCR [aquí](https://github.com/users/FranToBa/packages/container/package/cloudfood).
 - Las pruebas y buenas prácticas para la justificación del contenedor base puede consultarlas [aquí](./docs/imagendocker.md).
 
 
@@ -59,9 +59,11 @@ Para mas información sobre las herramientas anteriores acceder a [herramientas]
 	- Test [menu.test.js](./tests/menu.test.js)
 
 - [Historias de usuario](https://github.com/FranToBa/CloudFood/issues)
-	- [HU01:](https://github.com/FranToBa/CloudFood/issues/2) consultar menú
-	- [HU02:](https://github.com/FranToBa/CloudFood/issues/3) seleccionar menu
-	- [HU03:](https://github.com/FranToBa/CloudFood/issues/4) pedido
+	- [HU01:](https://github.com/FranToBa/CloudFood/issues/2) como usuario quiero consultar los menús disponibles
+	- [HU02:](https://github.com/FranToBa/CloudFood/issues/3) como usuario quiero seleccionar menú
+	- [HU03:](https://github.com/FranToBa/CloudFood/issues/4) como usuario quiero modificar el menú seleccionado
+	- [HU04:](https://github.com/FranToBa/CloudFood/issues/12) como usuario quiero realizar el pedido 
+	- [HU05:](https://github.com/FranToBa/CloudFood/issues/13) como desarrollador quiero ejecutar los tests en un contenedor
 
 - Issues cerrados
 	- Issues [H1](https://github.com/FranToBa/CloudFood/milestone/1?closed=1)
