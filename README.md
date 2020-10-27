@@ -17,6 +17,21 @@ Ejecución de tests:
 $ npm test
 ~~~
 
+## Docker
+
+Para la ejecución de los tests a partir de un contenedor debemos:
+~~~
+- Descargar este repositorio y situarnos en él.
+- docker run -t -v `pwd`:/test frantoba/cloudfood
+~~~
+
+- Justificación del [contenedor base](./docs/imagendocker.md).
+- [Dockerfile](./Dockerfile) siguiendo [buenas prácticas](./docs/buenaspracticas.md).
+- Contenedor subido a [DockerHub](https://hub.docker.com/r/frantoba/cloudfood) y [documentación de la actualización automática](actautomatica_docker.md).
+- [Documentación de GitHub Container Registry](ghcr.md). Puede acceder a mi contenedor de GHCR [aquí](https://github.com/users/FranToBa/packages/container/package/cloudfood).
+- Las pruebas y buenas prácticas para la justificación del contenedor base puede consultarlas [aquí](./docs/imagendocker.md).
+
+
 ## Justificación de Herramientas
 
 - Gestor de paquetes/herramienta de construcción: **npm**. Se puede consultar la justificación individualizada en [npm.md](./docs/npm.md).
@@ -51,6 +66,8 @@ Para mas información sobre las herramientas anteriores acceder a [herramientas]
 - Issues cerrados
 	- Issues [H1](https://github.com/FranToBa/CloudFood/milestone/1?closed=1)
 	- Issues [H2](https://github.com/FranToBa/CloudFood/milestone/2?closed=1)
+	- Issues [H3](https://github.com/FranToBa/CloudFood/milestone/3?closed=1)
+
 	 
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
 
