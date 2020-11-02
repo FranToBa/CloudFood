@@ -3,7 +3,7 @@
 
 ## Descripción
 
-¿Por qué este proyecto? Por facilitar la tarea de los pedidos de comida actualmente, realizándolos de una manera sencilla y efectiva.
+¿Por qué este proyecto?? Por facilitar la tarea de los pedidos de comida actualmente, realizándolos de una manera sencilla y efectiva.
 
 El objetivo es crear una API sobre comida de restaurantes, basada en la consulta de los menús de tu restaurantes favoritos y reserva de los mismos, pudiendo aplicar filtros en base a lo que te apetezca comer. Podrás consultar menús completos, incluyendo primer plato, segundo plato y postre. Cuando hayas seleccionado tu menú, podrás realizar el pedido y ¡a disfrutar!.
 
