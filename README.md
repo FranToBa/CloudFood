@@ -3,7 +3,7 @@
 
 ## Descripción
 
-¿Por qué este proyecto?? Por facilitar la tarea de los pedidos de comida actualmente, realizándolos de una manera sencilla y efectiva.
+¿Por qué este proyecto? Por facilitar la tarea de los pedidos de comida actualmente, realizándolos de una manera sencilla y efectiva.
 
 El objetivo es crear una API sobre comida de restaurantes, basada en la consulta de los menús de tu restaurantes favoritos y reserva de los mismos, pudiendo aplicar filtros en base a lo que te apetezca comer. Podrás consultar menús completos, incluyendo primer plato, segundo plato y postre. Cuando hayas seleccionado tu menú, podrás realizar el pedido y ¡a disfrutar!.
 
@@ -17,61 +17,27 @@ Ejecución de tests:
 $ npm test
 ~~~
 
-## Docker
-
 Para la ejecución de los tests a partir de un contenedor debemos:
 ~~~
 - Descargar este repositorio y situarnos en él.
 - docker run -t -v `pwd`:/test frantoba/cloudfood
 ~~~
 
-- Justificación del [contenedor base](./docs/imagendocker.md).
-- [Dockerfile](./Dockerfile) siguiendo [buenas prácticas](./docs/buenaspracticas.md).
-- Contenedor subido a [DockerHub](https://hub.docker.com/r/frantoba/cloudfood) y [documentación de la actualización automática](./docs/actautomatica_docker.md).
-- [Documentación de GitHub Container Registry](./docs/ghcr.md). Puede acceder a mi contenedor de GHCR [aquí](https://github.com/users/FranToBa/packages/container/package/cloudfood).
-- Las pruebas y buenas prácticas para la justificación del contenedor base puede consultarlas [aquí](./docs/imagendocker.md).
 
+## Documentación y enlacesde interés
+- [Configuración incial de git](./docs/configuracion_inicial.md).
+- [Pasos seguidos](./docs/pasos.md).
+- [Herramientas](./docs/herramientas.md).
 
-## Justificación de Herramientas
+- [Justificación de herramientas](./docs/just_her.md).
+- [Índice sobre información de DOCKER](./docs/indicedocker.md).
 
-- Gestor de paquetes/herramienta de construcción: **npm**. Se puede consultar la justificación individualizada en [npm.md](./docs/npm.md).
-- Tests: **Jest**. Se puede consultar la justificación individualizada en [jest.md](./docs/jest.md).
-
-- Lenguaje: JavaScript.
-- BD: MySql.
-- Log: Winston.
-
-Para mas información sobre las herramientas anteriores acceder a [herramientas](./docs/herramientas.md).
-
-
-
-
-## Documentación
-- [Configuración incial de git](./docs/configuracion_inicial.md)
-- [Pasos seguidos](./docs/pasos.md)
-- [Herramientas](./docs/herramientas.md)
-
-
-## Progreso
-- Carpeta de [código](./src) del pryecto
-	- Clase [menu.js](./src/menu.js)
-- Carpeta de [tests](./tests)
-	- Test [menu.test.js](./tests/menu.test.js)
-
+- Carpeta de [código](./src) del proyecto.
+- Carpeta de [tests](./tests).
 - [Historias de usuario](https://github.com/FranToBa/CloudFood/issues)
-	- [HU01:](https://github.com/FranToBa/CloudFood/issues/2) como usuario quiero consultar los menús disponibles
-	- [HU02:](https://github.com/FranToBa/CloudFood/issues/3) como usuario quiero seleccionar menú
-	- [HU03:](https://github.com/FranToBa/CloudFood/issues/4) como usuario quiero modificar el menú seleccionado
-	- [HU04:](https://github.com/FranToBa/CloudFood/issues/12) como usuario quiero realizar el pedido 
-	- [HU05:](https://github.com/FranToBa/CloudFood/issues/13) como desarrollador quiero ejecutar los tests en un contenedor
-
-- Issues cerrados
-	- Issues [H1](https://github.com/FranToBa/CloudFood/milestone/1?closed=1)
-	- Issues [H2](https://github.com/FranToBa/CloudFood/milestone/2?closed=1)
-	- Issues [H3](https://github.com/FranToBa/CloudFood/milestone/3?closed=1)
-
-	 
+- [Issues cerrados](https://github.com/FranToBa/CloudFood/issues?q=is%3Aissue+is%3Aclosed)
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
+
 
 
 
