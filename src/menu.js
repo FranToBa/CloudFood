@@ -129,30 +129,30 @@ class Menu {
 
 
      consultarPrecioEntrantes(){
-	var precios = new Array();
-	for(var plato in ENTRANTES){
-		precios.push(plato + ": "+ENTRANTES[plato]+"\n");
+	var preciosE = new Array();
+	for(var i=0;i<ENTRANTES.length;i++){
+		preciosE.push(ENTRANTES[i] + ": "+ENTRANTES[ENTRANTES[i]]);
 	}
 	
-	return precios;
+	return preciosE;
      }
 
      consultarPrecioPlatos(){
-	var precios = new Array();
-	for(var plato in PLATOS){
-		precios.push(plato + ": "+PLATOS[plato]+"\n");
+	var preciosP = new Array();
+	for(var i=0;i<PLATOS.length;i++){
+		preciosP.push(PLATOS[i] + ": "+PLATOS[PLATOS[i]]);
 	}
 	
-	return precios;
+	return preciosP;
      }
 
      consultarPrecioPostres(){
-	var precios = new Array();
-	for(var plato in POSTRES){
-		precios.push(plato + ": "+POSTRES[plato]+"\n");
+	var preciosPo = new Array();
+	for(var i=0;i<POSTRES.length;i++){
+		preciosPo.push(POSTRES[i] + ": "+POSTRES[POSTRES[i]]);
 	}
 	
-	return precios;
+	return preciosPo;
      }
 	
 	
