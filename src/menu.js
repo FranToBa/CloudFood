@@ -126,6 +126,34 @@ class Menu {
 
 	return pedido;
      }
+
+
+     consultarPrecioEntrantes(){
+	var precios = new Array();
+	for(var plato in ENTRANTES){
+		precios.push(plato + ": "+ENTRANTES[plato]+"\n");
+	}
+	
+	return precios;
+     }
+
+     consultarPrecioPlatos(){
+	var precios = new Array();
+	for(var plato in PLATOS){
+		precios.push(plato + ": "+PLATOS[plato]+"\n");
+	}
+	
+	return precios;
+     }
+
+     consultarPrecioPostres(){
+	var precios = new Array();
+	for(var plato in POSTRES){
+		precios.push(plato + ": "+POSTRES[plato]+"\n");
+	}
+	
+	return precios;
+     }
 	
 	
 }
