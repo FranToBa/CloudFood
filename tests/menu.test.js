@@ -113,5 +113,37 @@ describe("Probando la clase menu.js", () => {
 
   });
 
+
+  describe("Testeando los métodos de consulta de precios", () =>{
+    test("Probando la visualización de los precios de los entrantes)", () => {
+      menu.entrante="Pasta";
+      var pedido= new Array();
+      pedido.push("Sopa"+": "+"2.5");
+      pedido.push("Pasta"+": "+"3");
+      pedido.push("Ensalada"+": "+"2");
+      expect(menu.consultarPrecioEntrantes()).toStrictEqual(pedido);
+    });
+    test("Probando la visualización de los precios de los platos principales)", () => {
+      menu.entrante="Pasta";
+      var pedido= new Array();
+      pedido.push("Pescado"+": "+"4.5");
+      pedido.push("Carne"+": "+"5");
+      pedido.push("Arroz"+": "+"4");
+      expect(menu.consultarPrecioPlatos()).toStrictEqual(pedido);
+    });
+    test("Probando la visualización de los precios de los postres)", () => {
+      menu.entrante="Pasta";
+      var pedido= new Array();
+      pedido.push("Tarta"+": "+"1.5");
+      pedido.push("Brownie"+": "+"2");
+      pedido.push("Fruta"+": "+"1");
+      expect(menu.consultarPrecioPostres()).toStrictEqual(pedido);
+    });
+
+
+  });
+
+
+
 })
 
