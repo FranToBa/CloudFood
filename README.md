@@ -24,14 +24,18 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 ~~~
 
 
-## Documentación y enlacesde interés
+## Enlaces de interes
+
+#### Documentación
 - [Configuración incial de git](./docs/configuracion_inicial.md).
 - [Pasos seguidos](./docs/pasos.md).
 - [Herramientas](./docs/herramientas.md).
 
-- [Justificación de herramientas](./docs/just_her.md).
+#### Índices de rúbricas pasadas
+- [Justificación de gestores](./docs/just_her.md).
 - [Índice sobre información de DOCKER](./docs/indicedocker.md).
 
+#### Progreso
 - Carpeta de [código](./src) del proyecto.
 - Carpeta de [tests](./tests).
 - [Historias de usuario](https://github.com/FranToBa/CloudFood/issues)
