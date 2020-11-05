@@ -1,12 +1,21 @@
 //Simulamos enums sobre los tipos de platos
 const ENTRANTES = ['Sopa','Pasta','Ensalada']
+ENTRANTES['Sopa'] = 2.5;
+ENTRANTES['Pasta'] = 3.0;
+ENTRANTES['Ensalada'] = 2.0;
 Object.freeze(ENTRANTES);
 
 const PLATOS = ['Pescado','Carne','Arroz']
+PLATOS['Pescado'] = 4.5;
+PLATOS['Carne'] = 5.0;
+PLATOS['Arroz'] = 4.0;
 Object.freeze(PLATOS);
 
 
 const POSTRES = ['Tarta','Brownie','Fruta']
+POSTRES['Tarta'] = 1.5;
+POSTRES['Brownie'] = 2.0;
+POSTRES['Fruta'] = 1.0;
 Object.freeze(POSTRES);
 
 class Menu {
