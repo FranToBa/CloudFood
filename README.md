@@ -38,7 +38,7 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 #### Progreso
 - Carpeta de [código](./src) del proyecto.
 - Carpeta de [tests](./tests).
-- [Historias de usuario](https://github.com/FranToBa/CloudFood/issues)
+- [Historias de usuario](https://github.com/FranToBa/CloudFood/issues?q=is%3Aopen+is%3Aissue+label%3Auser-stories)
 - [Issues cerrados](https://github.com/FranToBa/CloudFood/issues?q=is%3Aissue+is%3Aclosed)
 - [Milestones](https://github.com/FranToBa/CloudFood/milestones)
 

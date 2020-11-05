@@ -8,13 +8,13 @@ Conozco las bases de este lenguaje, por lo que me gustaría profundizar en él. 
 
 > Gestor de paquetes / herramienta de construcción
 
-Justificación individualizada en [npm.md](./npm.nmd)
+Justificación individualizada en [npm.md](./npm.md)
 - Mas adelante, pasaré a usar Gulp, ya que en este hito era suficiente con las funcionalidades de npm.
 
 
 > Tests
 
-Justificación individualizada en [jest.md](./jest.nmd)
+Justificación individualizada en [jest.md](./jest.md)
 
 
 > Base de datos, Sistema de log, Framework web
