@@ -40,5 +40,14 @@
 - Subida del contenedor a GitHub Container Registry.
 - Se pueden consultar estos pasos de forma detallada en el [README](../README.md).
 
+## Hito 4
+
+- [Ejercicios de autoevaluación](https://github.com/FranToBa/Autoevaluacion-IV/blob/main/docs/s6.md).
+- Creación y configuración del archivo de travis.
+- Creación y configuración del archivo de shippable.
+- Actualización del archivo de travis para aprovechar nuestro contenedor docker.
+- Avance de código relacionado con la consulta de los precios de los platos.
+- Se pueden consultar estos pasos de forma detallada en el [README](../README.md).
+
 
 
