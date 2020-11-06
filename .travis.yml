@@ -1,12 +1,7 @@
-language: node_js
-node_js:
-   - 9
-   - 10
-   - 11
-   - 12
-   - 13
-
+language: minimal
+services:
+    - docker
 before_install:
- - npm install -g jest
-script: npm test
+    - docker pull frantoba/cloudfood
 
+script: docker run -t -v `pwd`:/test frantoba/cloudfood
