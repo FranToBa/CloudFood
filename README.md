@@ -26,9 +26,14 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 ## Integración continua
 
 1. Integración continua funcionando y [correcta justificación](./docs/travis_info.md) de la misma: Travis.
+
 2. [Configuración de algún sistema de integración continua adicional](./docs/circleci_info.md): CircleCI.
-3. Uso correcto del gestor de tareas en todos los casos anteriores. [Consultar aquí](./docs/icontinua_gestor.md).
+
+3. Hasta este punto del proyecto, npm cumple todos los requisitos para ejercer como gestor de tareas. En el archivo de configuración de travis, instalamos la dependencias con "npm install" y ejecutamos los tests con "npm test". En el archivo de CircleCi, .
+En el siguiente punto usaremos docker en nuestra integración continua. En este caso, nuestro Dockerfile es el encargado de indicar que npm instalará lo necesario y ejecutara la orden de npm para ejecutar los tests.
+
 4. Aprovechamiento del contenedor de Docker en alguno de los sistemas de CI. [Consultar aquí](./docs/icontinua_docker.md).
+
 5. Avance de código:
 	#### Clase [menu](./src/menu.js)
 	- Se ha incluído vectores indexados en los que se asocia un precio diferente a cada uno de los distintos platos, diferenciando entre entrantes, platos principales y postres. (Issue #21)
