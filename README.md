@@ -23,6 +23,26 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 - docker run -t -v `pwd`:/test frantoba/cloudfood
 ~~~
 
+## Integración continua
+
+1. Integración continua funcionando y [correcta justificación](./docs/travis_info.md) de la misma: Travis.
+2. [Configuración de algún sistema de integración continua adicional](./docs/circleci_info.md): CircleCI.
+3. Uso correcto del gestor de tareas en todos los casos anteriores. [Consultar aquí](./docs/icontinua_gestor.md).
+4. Aprovechamiento del contenedor de Docker en alguno de los sistemas de CI. [Consultar aquí](./docs/icontinua_docker.md).
+5. Avance de código:
+	#### Clase [menu](./src/menu.js)
+	- Se ha incluído vectores indexados en los que se asocia un precio diferente a cada uno de los distintos platos, diferenciando entre entrantes, platos principales y postres. (Issue #21)
+	- Para la consulta de los precios se han añadido los siguientes métodos (Issue #23):
+		- Método para consultar los precios de los entrantes. 
+		- Método para consultar los precios de los platos principales.
+		- Método para consultar los precios de los postres.
+
+	#### [Tests](./tests/menu.test.js)
+	- Se han incluido a los tests las comprobaciones sobre los métodos añadidos de consulta de precios. (Issue #24)
+ 
+
+
+
 
 ## Enlaces de interes
 
