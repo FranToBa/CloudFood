@@ -25,12 +25,12 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 
 ## Integración continua
 
-1. Integración continua funcionando y [correcta justificación](./docs/travis_info.md) de la misma: Travis.
+1. Integración continua funcionando y [correcta justificación](./docs/travis_info.md) de la misma: Travis. **Usaré Travis para probar mi contenedor**.
 
-2. [Configuración de algún sistema de integración continua adicional](./docs/shippable_info.md): Shippable.
+2. [Configuración de algún sistema de integración continua adicional](./docs/shippable_info.md): Shippable. **Usaré Shippable para probar diferentes versiones de node**.
 
-3. Hasta este punto del proyecto, npm cumple todos los requisitos para ejercer como gestor de tareas. En el [archivo de configuración de travis](./.travis.yml), instalamos jest con "npm install -g jest" y ejecutamos los tests con "npm test". En el [archivo de shippable](./.shippable.yml), hacemos lo mismo: instalamos dependencias y jest, y llamamos a la orden de npm para ejecutar tests.
-En el siguiente punto usaremos docker en nuestra integración continua. En este caso, nuestro Dockerfile es el encargado de indicar que npm instalará lo necesario y ejecutara la orden de npm para ejecutar los tests.
+3. Hasta este punto del proyecto, npm cumple todos los requisitos para ejercer como gestor de tareas. En el [archivo de configuración de travis](./.travis.yml), usamos nuestro contenedor de Docker. Nuestro contenedor se encarga. a través de nuestro Dockerfile, se instalar las dependencias necesarias y jest a traves de npm.
+En el [archivo de shippable](./.shippable.yml), instalamos dependencias, jest y ejecutamos los tests a través de npm.
 
 4. Aprovechamiento del contenedor de Docker en alguno de los sistemas de CI. [Consultar aquí](./docs/icontinua_docker.md).
 
