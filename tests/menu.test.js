@@ -140,7 +140,6 @@ describe("Probando la clase menu.js", () => {
       expect(menu.consultarPrecioPostres()).toStrictEqual(pedido);
     });
 
-
   });
 
 

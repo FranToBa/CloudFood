@@ -154,8 +154,7 @@ class Menu {
 	
 	return preciosPo;
      }
-	
-	
+		
 }
 
 module.exports = Menu;
