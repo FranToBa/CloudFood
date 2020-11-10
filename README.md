@@ -43,7 +43,7 @@ En el [archivo de shippable](./.shippable.yml), instalamos dependencias, jest y 
 		- Método para consultar los precios de los postres.
 
 	#### [Tests](./tests/menu.test.js)
-	- Se han incluido a los tests las comprobaciones sobre los métodos añadidos de consulta de precios. (Issue #24)
+	- Se han incluido a los tests las comprobaciones sobre los métodos añadidos de consulta de precios. 
  
 
 

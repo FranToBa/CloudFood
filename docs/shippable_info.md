@@ -17,9 +17,9 @@ En este archivo, tenemos diferentes partes:
 
 ![](./imagenes/versiones_shippable.png)
 
-	- La version 0.12 que es de las versiones más antiguas. Esta versión ha fallado, algo esperado al ser tan antigua.
-	- La versión 10.13.0, por probar una versión intermedia.
-	- La versión 11, para ver que travis usa la más actual de esta versión. Aquí usa la 11.15.0.
-	![](./imagenes/shippable-11.png)
-	- Node, que utiliza la última versión. En este caso utiliza la 15.
-	![](./imagenes/shippable-15.png)
+- La version 0.12 que es de las versiones más antiguas. Esta versión ha fallado, algo esperado al ser tan antigua.
+- La versión 10.13.0, por probar una versión intermedia.
+- La versión 11, para ver que travis usa la más actual de esta versión. Aquí usa la 11.15.0.
+![](./imagenes/shippable-11.png)
+- Node, que utiliza la última versión. En este caso utiliza la 15.
+![](./imagenes/shippable-15.png)
