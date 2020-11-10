@@ -8,21 +8,34 @@ El sistema que voy a utilizar es Travis, ya que guarda relación con github y se
 
 Para su configuración, debemos registrarnos en su sistema enlazandolo con nuestra cuenta de github. Después, añadir el fichero travis.yml a nuestro directorio. Estos pasos podemos verlos en los [ejercicios de autoevaluación](https://github.com/FranToBa/Autoevaluacion-IV/blob/main/docs/s6.md).
 
-Nuestro fichero va a constar de 4 partes: el lenguaje, las versiones a utilizar, las ordenes necesarias antes del install y la orden a ejecutar. Vamos a probar las versiones de node de la 9 a la 13.
-
-![](./imagenes/travis_versiones.png)
-
-
 Dese github, podemos ver que se están realizando los tests al hacer un push.
 
 ![](./imagenes/travis_git.png)
 
 
-En la CI de de Travis, podemos ver la ejecución de las diferentes versiones. La versión 9 ha fallado, por lo que usaremos versiones más actuales que no han fallado.
+Nuestro fichero va a constar de 2 partes:
 
-![](./imagenes/travis_versiones2.png)
+![](./imagenes/travis_archivo.png)
+
+- El lenguaje: en este caso usamos minimal, que ya incluye docker, por lo que no tenemos que indicar que usaremos docker como servicio.
+- Script: en este caso indicaremos que use nuestro condenedor con la variable $TRAVIS-BUILD_DIR, la cual nos da el path absoluto al directorio de trabajo donde ha sido copiada la construcción del repositorio. Información de esta variable [consultada aquí](https://docs.travis-ci.com/user/environment-variables/).
 
 
-Cuando hacemos push, Travis ejecuta la orden que hemos indicado en el archivo .travis.yml, que en este caso es la realización de nuestros tests:
+Accediendo al CI de Traivs, podemos ver la ejecución:
+
+![](./imagenes/travisok.png)
+
+
+Con el script ejecutado, no encontrará la imagen, pero travis la descargará automáticamente. Por ello, podemos omitir la línea donde se hacía docker pull frantoba/cloudfood. Como vemos, en el job log se encuentran las siguientes líneas:
+~~~
+$ docker run -t -v $TRAVIS_BUILD_DIR:/test frantoba/cloudfood
+Unable to find image 'frantoba/cloudfood:latest' locally
+latest: Pulling from frantoba/cloudfood
+
+Status: Downloaded newer image for frantoba/cloudfood:latest
+~~~
+
+![](./imagenes/travis_pull.png)
 
 ![](./imagenes/travis_tests.png)
+
