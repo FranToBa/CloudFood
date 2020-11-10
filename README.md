@@ -32,7 +32,7 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 3. Hasta este punto del proyecto, npm cumple todos los requisitos para ejercer como gestor de tareas. En el [archivo de configuración de travis](./.travis.yml), usamos nuestro contenedor de Docker. Nuestro contenedor se encarga. a través de nuestro Dockerfile, se instalar las dependencias necesarias y jest a traves de npm.
 En el [archivo de shippable](./.shippable.yml), instalamos dependencias, jest y ejecutamos los tests a través de npm.
 
-4. Aprovechamiento del contenedor de Docker en alguno de los sistemas de CI. [Consultar aquí](./docs/icontinua_docker.md).
+4. Aprovechamiento del contenedor de Docker en alguno de los sistemas de CI. Se ha usado en Travis y se puede consultar en la [justificación de Travis](./docs/travis_info.md) ya mencionada.
 
 5. Avance de código:
 	#### Clase [menu](./src/menu.js)
