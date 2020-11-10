@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - 10
+  - 0.12
+  - 10.13.0
   - 11
-  - 12
-  - 13
+  - node
+
 
 build:
   ci:
