@@ -21,6 +21,11 @@
   },
   "homepage": "https://github.com/FranToBa/CloudFood#readme",
   "devDependencies": {
+    "grunt": "^1.2.0",
     "jest": "^26.5.3"
+  },
+  "dependencies": {
+    "grunt-cli": "1.2.0",
+    "grunt-run": "^0.8.1"
   }
 }

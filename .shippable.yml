@@ -9,4 +9,5 @@ build:
   ci:
     - npm install
     - npm install -g jest
-    - npm test
+    - npm install -g grunt-cli
+    - grunt test

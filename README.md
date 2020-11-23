@@ -14,7 +14,7 @@ $ npm install
 ~~~
 Ejecución de tests:
 ~~~
-$ npm test
+$ grunt test
 ~~~
 
 Para la ejecución de los tests a partir de un contenedor debemos:

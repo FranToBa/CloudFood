@@ -8,10 +8,10 @@ WORKDIR /app
 
 # Copiar el fichero de configuración a nuestra imagen
 COPY package.json ./
+COPY Gruntfile.json ./
 
 # Instalar las dependencias necesarias y crear usuario
-RUN npm install
-RUN npm install -g jest
+RUN npm install && npm install -g jest && npm install -g grunt-cli
 RUN adduser -D menu
 
 # Runtime
@@ -20,5 +20,5 @@ USER menu
 WORKDIR /test
 
 
-CMD npm run test
+CMD ["grunt","test"]
 
