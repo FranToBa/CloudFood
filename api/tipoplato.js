@@ -8,7 +8,7 @@ module.exports = (req,res) =>{
     const{numMenu="-1"} = req.query
     var result;
     var i = 0;
-    var carta = [];
+    var carta = []; 
 
     //Guardamos en un arrat carta los menus obtenidos del fichero data
     while( i < data.data.length){
@@ -25,7 +25,13 @@ module.exports = (req,res) =>{
 
     if(numMenu == "1" || numMenu == "2" || numMenu == "3"){
         var menuElegido = carta[parseInt(numMenu)-1]
-	result = String(menuElegido.mostrarMenuSeleccionado());
+	var menu = [];
+	menu.push(menuElegido.mostrarMenuSeleccionado())
+	menu.push(menuElegido.consultarPrecioMenu())
+	// FORMAMOS EL JSON	
+    	var objetoJSON = {}  
+        objetoJSON.Menu = menu;
+        result = JSON.stringify(objetoJSON)
         
     }
     else if(numMenu == "-1"){
