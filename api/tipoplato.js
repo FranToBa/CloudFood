@@ -5,10 +5,10 @@ const Menu  = require("../src/menu");
 module.exports = (req,res) =>{
 
    //Declaramos las variables: el argumento del menu elegido => -1 si no hay arg
-    const{numMenu=-1} = req.query
+    const{numMenu="-1"} = req.query
     var result;
     var i = 0;
-    var carta = []
+    var carta = [];
 
     //Guardamos en un arrat carta los menus obtenidos del fichero data
     while( i < data.data.length){
@@ -16,24 +16,19 @@ module.exports = (req,res) =>{
         principal = data.data[i]['principal'];
 	postre = data.data[i]['postre'];      
         var menu = new Menu(entrante,principal,postre)
-        carta.push(menu)
-	i+=1
+        carta.push(menu);
+	i+=1;
     }
 
     //Dependiendo del numero del menu, seleccionamos dicho menu o indicamos si hay fallo,
     //Pasamos el menu a json
 
-    if(numMenu == 1 || numMenu == 2 || numMenu == 3){
-    	var datosJSON = []
-    	var objetoJSON = {}
-        var menuElegido = carta[numMenu-1]
-        
-        datosJSON.push({menuElegido.mostrarMenuSeleccionado()});
-        objetoJSON = datosJSON;
-        result = JSON.stringify(objetoJSON)
+    if(numMenu == "1" || numMenu == "2" || numMenu == "3"){
+        var menuElegido = carta[parseInt(numMenu)-1]
+	result = String(menuElegido.mostrarMenuSeleccionado());
         
     }
-    else if(menu == -1){
+    else if(numMenu == "-1"){
         result="Indica un menú";
     }
     else{
