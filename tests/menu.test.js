@@ -88,7 +88,7 @@ describe("Probando la clase menu.js", () => {
   describe("Testeando mostrarMenuSeleccionado", () =>{
     test("Probando la visualización del menú seleccionado (y modificado anteriormente)", () => {
       var menufinal= new Array();
-      menufinal.push("ENTRANTE: "+"Pasta"+"\n"+"PLATO PRINCIPAL: "+"Carne"+"\n"+"POSTRE: "+"Fruta");
+      menufinal.push("ENTRANTE: "+"Pasta"+" PLATO PRINCIPAL: "+"Carne"+" POSTRE: "+"Fruta");
       expect(menu.mostrarMenuSeleccionado()).toStrictEqual(menufinal);
     });
 
@@ -138,6 +138,15 @@ describe("Probando la clase menu.js", () => {
       pedido.push("Brownie"+": "+"2");
       pedido.push("Fruta"+": "+"1");
       expect(menu.consultarPrecioPostres()).toStrictEqual(pedido);
+    });
+
+  });
+  describe("Testeando los métodos de consulta de precios de un menu seleccionado", () =>{
+    test("Probando la visualización de los precios de los entrantes)", () => {
+      menu.entrante="Pasta";
+      var precio= new Array();
+      precio.push("Precio del menú: " + 9);
+      expect(menu.consultarPrecioMenu()).toStrictEqual(precio);
     });
 
   });

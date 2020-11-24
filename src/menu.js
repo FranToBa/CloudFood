@@ -105,7 +105,7 @@ class Menu {
     mostrarMenuSeleccionado(){
 	var menuSeleccionado = new Array();
 	if(this.entrante!=null && this.plato!=null && this.postre!=null){		
-		menuSeleccionado.push("ENTRANTE: "+this.entrante+"\n"+"PLATO PRINCIPAL: "+this.plato+"\n"+"POSTRE: "+this.postre);
+		menuSeleccionado.push("ENTRANTE: "+this.entrante+" PLATO PRINCIPAL: "+this.plato+" POSTRE: "+this.postre);
 	}else{
 		throw new Error("El menu no esta completo");
 		
@@ -153,6 +153,14 @@ class Menu {
 	}
 	
 	return preciosPo;
+     }
+
+     consultarPrecioMenu(){
+	var precioR = new Array();
+	var precio = ENTRANTES[this.entrante]+ PLATOS[this.plato]+POSTRES[this.postre]
+	precioR.push("Precio del menú: " + precio);
+	
+	return precioR;
      }
 		
 }
