@@ -25,8 +25,7 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 
 ## Uso de sistemas serverless
 
-1. Despliegue correcto y funcionando, con [documentación](./docs/vercel.md) de la conexión entre el repo en GitHub y Netlify/Vercel para despliegue continuo.
-2. Integración dentro del proyecto general. Se ha incluido una api en la que realizamos una función que devuelve los platos del menú seleccionado y su precio (HUS: #42 Y #49). Se ha usado el fichero de datos con los menús [data.js](./api/data.js) y el código es [seleccionmenu.js](./api/seleccionmenu.js).
+- 1 y 2. Despliegue correcto y funcionando e integración dentro del proyecto general. Consultar esta [documentación](./docs/vercel.md).
 
 
 
