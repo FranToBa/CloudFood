@@ -23,5 +23,5 @@ Como podemos ver en la siguiente imagen, si accedemos a la url proporcionada por
 
 ![](./imagenes/vercel-f.png)
 
- La [url](https://cloud-food.vercel.app/api/seleccionmenu.js?numMenu=1) está en el fichero [iv.yaml](./iv.yaml) y el resultado en [5.json](../5.json).
+ La [url](https://cloud-food.vercel.app/api/seleccionmenu.js?numMenu=1) está en el fichero [../iv.yaml](./iv.yaml) y el resultado en [5.json](../5.json).
 
