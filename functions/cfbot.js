@@ -2,13 +2,15 @@ const Menu  = require("../src/menu");
 
 function getPlatos(tipoPlato){
    //Creamos un menu y devolvemos los platos del tipo indicado
-    var menu = new Menu()
+    var  menu = new Menu("Sopa", "Pescado", "Tarta");
     if(tipoPlato == "entrantes")
 	platos= menu.mostrarEntrantes()
     else if (tipoPlato == "principales")
 	platos= menu.mostrarPlatos()
     else if (tipoPlato == "postres")
 	platos= menu.mostrarPostres()
+    else if(tipoPlato == "fav")
+	platos = menu.mostrarMenuSeleccionado()
 
     return platos
 }
@@ -22,20 +24,23 @@ exports.handler = async function(e, c) {
         if (text){ //Contiene texto el mensaje, será el comando
             
             switch (text) {
-                case "/entrantes":
+                case "/cfentrantes":
                   result = getPlatos('entrantes');
                   break;
-                case "/principales":
+                case "/cfprincipales":
                   result = getPlatos('principales');
                   break;
-                case "/postres":
+                case "/cfpostres":
                   result = getPlatos('postres');
+                  break;
+                case "/cfmenufav":
+                  result = getPlatos('fav');
                   break;
                 case "/help":
                   result = "Bot para consultar platos según su tipo";
                   break;
                 default:
-                  result = "Comandos a usar: /entrantes, /principales, /postres, /help"
+                  result = "Comandos a usar: /entrantes, /principales, /postres, /menufav, /help"
                   break;
             }       
             return {
