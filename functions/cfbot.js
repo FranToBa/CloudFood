@@ -1,21 +1,21 @@
 const Menu  = require("../src/menu");
 
+//Función para devolver los platos del tipo indicado
 function getPlatos(tipoPlato){
-   //Creamos un menu y devolvemos los platos del tipo indicado
     var  menu = new Menu("Pasta", "Carne", "Brownie");
-    if(tipoPlato == "entrantes")
+    if(tipoPlato == "entrantes"){
 	platos = "Nuestros ligeros entrantes son: \n"
 	platos += (menu.mostrarEntrantes()).toString()
-    else if (tipoPlato == "principales")
+    }else if (tipoPlato == "principales"){
 	platos = "Nuestros deliciosos platos principales son: \n"
 	platos += (menu.mostrarPlatos()).toString()
-    else if (tipoPlato == "postres")
-	platos = "Nuestros maginificos postres son: \n"
+    }else if (tipoPlato == "postres"){
+	platos = "Nuestros magníficos postres son: \n"
 	platos += (menu.mostrarPostres()).toString()
-    else if(tipoPlato == "fav")
-	platos = "Nuestros menú estrella es: \n"
+    }else if(tipoPlato == "fav"){
+	platos = "Nuestro menú estrella es: \n"
 	platos += menu.mostrarMenuSeleccionado()
-
+    }
     return platos
 }
 
@@ -24,9 +24,8 @@ exports.handler = async function(e, c) {
         var body = JSON.parse(e.body);
         var {chat, text} = body.message;
 	var result = '';
-      
-        if (text){ //Contiene texto el mensaje, será el comando
-            
+    	
+        if (text){
             switch (text) {
                 case "/cfentrantes":
                   result = getPlatos('entrantes');
@@ -44,7 +43,7 @@ exports.handler = async function(e, c) {
                   result = "Bot para consultar platos según su tipo";
                   break;
                 default:
-                  result = "Comandos a usar: /cfentrantes, /cfprincipales, /cfpostres, /cfmenufav, /help"
+                  result = "Comandos a usar: /cfentrantes, /cfprincipales, /cfpostres, /cfmenufav, /help";
                   break;
             }       
             return {
