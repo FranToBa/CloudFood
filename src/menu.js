@@ -21,7 +21,7 @@ Object.freeze(POSTRES);
 class Menu {
 
     /*Constructor en el que comprobamos que se seleccionan platos disponibles*/
-    constructor(entrante, plato, postre){
+    constructor(entrante="", plato="", postre=""){
 
 	if(ENTRANTES.includes(entrante)){
 		this.entrante = entrante;
