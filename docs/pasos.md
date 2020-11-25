@@ -49,5 +49,13 @@
 - Avance de código relacionado con la consulta de los precios de los platos.
 - Se pueden consultar estos pasos de forma detallada en el [README](../README.md).
 
+## Hito 5
+
+- [Ejercicios de autoevaluación](https://github.com/FranToBa/Autoevaluacion-IV/blob/main/docs/s8.md).
+- Despliegue de una función en Vercel. 
+- Creación y despliegue de un bot de telegram en Netlify.
+- Se pueden consultar estos pasos de forma detallada en el [README](../README.md).
+
+
 
 
