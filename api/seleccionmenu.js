@@ -15,7 +15,8 @@ module.exports = (req,res) =>{
 	entrante = data.data[i]['entrante'];
         principal = data.data[i]['principal'];
 	postre = data.data[i]['postre'];      
-        var menu = new Menu(entrante,principal,postre)
+        var menu = new Menu()
+	menu.setPlatos(entrante,principal,postre)
         carta.push(menu);
 	i+=1;
     }

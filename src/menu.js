@@ -21,8 +21,36 @@ Object.freeze(POSTRES);
 class Menu {
 
     /*Constructor en el que comprobamos que se seleccionan platos disponibles*/
-    constructor(entrante="", plato="", postre=""){
+    constructor(){
+	this.entrante = null;
+	this.plato = null;
+	this.postre = null;
 
+    }
+
+    setEntrante(entrante){
+	if(ENTRANTES.includes(entrante)){
+		this.entrante = entrante;
+	}else{	
+		throw new Error("Entrante no disponible");
+	}
+    }
+    setPrincipal(plato){
+	if(PLATOS.includes(plato)){
+		this.plato = plato;
+	}else{	
+		throw new Error("Plato principal no disponible");
+	}
+    }
+    setPostre(postre){
+	if(POSTRES.includes(postre)){
+		this.postre = postre;
+	}else{	
+		throw new Error("Postre no disponible");
+	}
+    }
+
+    setPlatos(entrante, plato, postre){
 	if(ENTRANTES.includes(entrante)){
 		this.entrante = entrante;
 	}else{	
@@ -35,6 +63,7 @@ class Menu {
 	if(PLATOS.includes(plato)){
 		this.plato = plato;
 	}else{	
+		this.entrante = null;
 		this.plato = null;
 		this.postre = null;
 		throw new Error("Plato principal no disponible");
@@ -43,10 +72,14 @@ class Menu {
 	if(POSTRES.includes(postre)){
 		this.postre = postre;
 	}else{	
+		this.entrante = null;
+		this.plato = null;
 		this.postre = null;
 		throw new Error("Postre no disponible");
 	}
     }
+
+    
 
     
     /* Get de los entrantes disponibles */

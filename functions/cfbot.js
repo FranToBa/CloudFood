@@ -2,7 +2,7 @@ const Menu  = require("../src/menu");
 
 //Función para devolver los platos del tipo indicado
 function getPlatos(tipoPlato){
-    var  menu = new Menu("Pasta", "Carne", "Brownie");
+    var  menu = new Menu();
     if(tipoPlato == "entrantes"){
 	platos = "Nuestros ligeros entrantes son: \n"
 	platos += (menu.mostrarEntrantes()).toString()

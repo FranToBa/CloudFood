@@ -4,17 +4,40 @@ const menu = new Menu("Sopa", "Pescado", "Tarta");
 
 describe("Probando la clase menu.js", () => {
 
-  describe("Testeando constructor", () =>{
-    test("Probando la construcción correcta del objeto", () => {
+  describe("Testeando setters", () =>{
+    test("Probando la construcción correcta del entrante", () => {
+      var entrante = "Pasta"
+      menu.setEntrante(entrante)
+      expect(menu.entrante).toBe("Pasta");
+    });
+    test("Probando la construcción correcta del plato principal", () => {
+      var plato = "Carne"
+      menu.setPrincipal(plato)
+      expect(menu.plato).toBe("Carne");
+    });
+    test("Probando la construcción correcta del menu completo", () => {
+      var postre = "Fruta"
+      menu.setPostre(postre)
+      expect(menu.postre).toBe("Fruta");
+    });
+
+    test("Probando la construcción correcta del menu completo", () => {
+      var entrante = "Sopa"
+      var plato = "Pescado"
+      var postre = "Tarta"
+      menu.setPlatos(entrante,plato,postre)
       expect(menu.entrante).toBe("Sopa");
       expect(menu.plato).toBe("Pescado");
       expect(menu.postre).toBe("Tarta");
     });
-
-    test("Probando que avisa si el constructor no es correcto", () => {
-      var e = () => new Menu("comida","comida","comida");
-      expect(e).toThrow();
+    test("Probando que da error si algun plato no esta disponible", () => {
+      var plato = "Jamon"
+      var postre = "Tarta" 
+      var entrante = "Sopa" 
+      var error1 = () => menu.setPlatos(entrante,plato,postre);
+      expect(error1).toThrow();
     });
+
   });
  
   describe("Testeando mostrarEntrantes", () =>{
