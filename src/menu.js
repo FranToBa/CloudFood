@@ -162,7 +162,31 @@ class Menu {
 	
 	return precioR;
      }
-		
+
+     consultarTipoPlato(plato){
+	if(ENTRANTES.includes(plato)){
+		return 'Entrante'
+	}else if(PLATOS.includes(plato)){
+		return 'Principal'
+	}else if(POSTRES.includes(plato)){
+		return 'Postre'
+	}else
+		return 'No disponible'
+	
+     }
+	
+     consultarPrecioPlato(plato){
+	if( this.consultarTipoPlato(plato) == 'Entrante' ){
+		return ENTRANTES[plato]
+	}else if( this.consultarTipoPlato(plato) == 'Principal' ){
+		return PLATOS[plato]
+	}else if( this.consultarTipoPlato(plato) == 'Postre' ){
+		return POSTRES[plato];
+	}else
+		return 'Plato no disponible';
+	
+
+     }	
 }
 
 module.exports = Menu;

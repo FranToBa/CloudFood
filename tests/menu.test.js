@@ -139,6 +139,15 @@ describe("Probando la clase menu.js", () => {
       pedido.push("Fruta"+": "+"1");
       expect(menu.consultarPrecioPostres()).toStrictEqual(pedido);
     });
+    test("Probando la visualización del precio de un plato seleccionado)", () => {
+      var plato = 'Brownie'
+      expect(menu.consultarPrecioPlato(plato)).toStrictEqual(2);
+    });
+    test("Probando la visualización del precio de un plato seleccionado que no está disponible)", () => {
+      var plato = 'Patatas'
+      var error = 'Plato no disponible'
+      expect(menu.consultarPrecioPlato(plato)).toStrictEqual(error);
+    });
 
   });
   describe("Testeando los métodos de consulta de precios de un menu seleccionado", () =>{
