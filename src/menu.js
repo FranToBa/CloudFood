@@ -203,8 +203,9 @@ class Menu {
 		return 'Principal'
 	}else if(POSTRES.includes(plato)){
 		return 'Postre'
-	}else
-		return 'No disponible'
+	}else{
+		throw new Error("Plato no disponible");
+	}
 	
      }
 	
@@ -215,10 +216,10 @@ class Menu {
 		return PLATOS[plato]
 	}else if( this.consultarTipoPlato(plato) == 'Postre' ){
 		return POSTRES[plato];
-	}else
-		return 'Plato no disponible';
+	}else{
+		throw new Error("Plato no disponible");
 	
-
+	}
      }	
 }
 
