@@ -12,7 +12,7 @@ var menu = new Menu()
 
 
 // Creamos un fichero para los logs
-var fichero = fs.createWriteStream('/access.log',{flags: 'a'}); 
+var fichero = fs.createWriteStream(__dirname + '/access.log',{flags: 'a'}); 
 
 // Establecemos el loger con formato tiny
 app.use(morgan('tiny', {stream: fichero})) 
