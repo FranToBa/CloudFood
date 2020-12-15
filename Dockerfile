@@ -20,7 +20,9 @@ RUN adduser -D menu
 VOLUME /test
 USER menu
 WORKDIR /test
-RUN chown -R menu /test
+
+RUN chown -R node /test
+USER node
 
 CMD ["grunt","test"]
 
