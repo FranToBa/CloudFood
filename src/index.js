@@ -3,19 +3,13 @@ const app = express()
 const port = process.env.port || 8080
 const Menu = require('./menu')
 const morgan = require('morgan')
-var fs = require('fs');
-
-
 
 
 var menu = new Menu()
 
 
-// Creamos un fichero para los logs
-var fichero = fs.createWriteStream(__dirname + '/access.log',{flags: 'a'}); 
-
 // Establecemos el loger con formato tiny
-app.use(morgan('tiny', {stream: fichero})) 
+app.use(morgan('tiny')) 
 
 // Devuelve un mensaje de bienvenida
 app.get('/', function(req, res) {

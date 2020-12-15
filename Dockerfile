@@ -14,20 +14,15 @@ USER node
 
 COPY package.json ./
 
-
 RUN npm install && rm -rf /var/lib/apt/lists/*
 
 USER root
 
 RUN rm package.json
 
-WORKDIR /test
-
-RUN chown -R node /test
-
 USER node
 
-
+WORKDIR /test
 ENV PATH=/node_modules/.bin:$PATH
 
 
