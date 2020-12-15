@@ -168,8 +168,7 @@ describe("Probando la clase menu.js", () => {
     });
     test("Probando la visualización del precio de un plato seleccionado que no está disponible)", () => {
       var plato = 'Patatas'
-      var error = 'Plato no disponible'
-      expect(menu.consultarPrecioPlato(plato)).toStrictEqual(error);
+      var e = () => menu.consultarPrecioPlato(plato);
     });
 
   });
