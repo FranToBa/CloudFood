@@ -10,12 +10,12 @@ USER node
 
 COPY --chown=node package*.json ./
 COPY  Gruntfile.js ./
-RUN npm ci
+RUN npm install
 
 
 
 USER root
-RUN rm package*.json
+
 
 
 VOLUME /test
