@@ -7,7 +7,7 @@ Label maintainer="Francisco Javier Torres Barea" version="1.0"
 RUN npm i -g grunt-cli grunt-run supertest express && mkdir /node_modules && chmod 755 /node_modules && chown node /node_modules
 
 USER node
-RUN chown -R node /test
+
 COPY --chown=node package*.json ./
 COPY  Gruntfile.js ./
 RUN npm ci
@@ -20,6 +20,8 @@ RUN rm package*.json
 
 VOLUME /test
 WORKDIR /test
+
+RUN chown -R node /test
 
 ENV PATH /node_modules/.bin:$PATH 
 
