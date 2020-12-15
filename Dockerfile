@@ -21,14 +21,11 @@ RUN npm install && rm -rf /var/lib/apt/lists/*
 USER root
 
 RUN rm package.json
-RUN chown -R usuario /test
-
-
-USER usuario
-
 VOLUME /test
 WORKDIR /test
+RUN chown -R usuario /test
 
+USER usuario
 
 ENV PATH=/node_modules/.bin:$PATH
 
