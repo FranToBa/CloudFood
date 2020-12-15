@@ -14,13 +14,13 @@ COPY Gruntfile.js ./
 RUN npm install && npm install -g jest && npm install -g grunt-cli
 RUN adduser -D menu
 
-RUN chown -R menu /test
+
 
 # Runtime
 VOLUME /test
 USER menu
 WORKDIR /test
-
+RUN chown -R menu /test
 
 CMD ["grunt","test"]
 
