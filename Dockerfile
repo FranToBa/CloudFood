@@ -10,19 +10,18 @@ WORKDIR /app
 COPY package.json ./
 COPY Gruntfile.js ./
 
+USER node
+
 # Instalar las dependencias necesarias y crear usuario
 RUN npm install && npm install -g jest && npm install -g grunt-cli
-RUN adduser -D menu
-
 
 
 # Runtime
 VOLUME /test
-USER menu
 WORKDIR /test
 
 RUN chown -R node /test
-USER node
+
 
 CMD ["grunt","test"]
 
