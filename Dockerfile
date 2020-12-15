@@ -4,18 +4,18 @@ Label maintainer="Francisco Javier Torres Barea" version="1.0"
 
 
 
-RUN mkdir /node_modules 
-
-RUN chown -R node /node_modules && chown -R node /usr/local/lib/node_modules && chown -R node /usr/local/bin 
-
-
-COPY  Gruntfile.js ./
-COPY   package.json ./
+RUN npm i -g grunt-cli grunt-run supertest express && mkdir /node_modules && chmod 755 /node_modules && chown node /node_modules
 
 USER node
+RUN chown -R node /test
+COPY --chown=node package*.json ./
+COPY  Gruntfile.js ./
+RUN npm ci
 
 
-RUN npm install && npm install -g jest-cli && npm install -g grunt-cli 
+
+USER root
+RUN rm package*.json
 
 
 VOLUME /test
