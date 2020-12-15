@@ -1,10 +1,11 @@
 FROM node:15.0.1-alpine3.10
 
 Label maintainer="Francisco Javier Torres Barea" version="1.0" 
-    
 
-# Directorio donde trabajaremos
-WORKDIR /app
+
+RUN mkdir /node_modules 
+RUN chown -R node /node_modules && chown -R node /usr/local/lib/node_modules && chown -R node /usr/local/bin 
+
 
 # Copiar el fichero de configuración a nuestra imagen
 COPY package.json ./
