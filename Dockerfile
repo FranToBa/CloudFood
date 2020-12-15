@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Copiar el fichero de configuración a nuestra imagen
 COPY package.json ./
-COPY Gruntfile.json ./
+COPY Gruntfile.js ./
 
 # Instalar las dependencias necesarias y crear usuario
 RUN npm install && npm install -g jest && npm install -g grunt-cli
