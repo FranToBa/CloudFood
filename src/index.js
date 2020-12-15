@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-const port = process.env.port || 8080
+const port = process.env.port || 5000
 const Menu = require('./menu')
+
 const morgan = require('morgan')
 
 var menu = new Menu()
