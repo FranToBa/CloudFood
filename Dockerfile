@@ -12,7 +12,6 @@ RUN mkdir node_modules \
 
 USER usuario
 
-
 COPY package.json ./
 
 
@@ -20,16 +19,18 @@ RUN npm install && rm -rf /var/lib/apt/lists/*
 
 USER root
 
-
 RUN rm package.json
-
+RUN chown -R node /test
 
 USER usuario
-
 
 ENV PATH=/node_modules/.bin:$PATH
 
 WORKDIR /test
+
+USER node
+
+
 
 CMD ["grunt","test"]
 
