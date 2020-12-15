@@ -3,8 +3,7 @@ FROM node:15.0.1-alpine3.10
 Label maintainer="Francisco Javier Torres Barea" version="1.0" 
 
 
-RUN mkdir /node_modules 
-RUN chown -R node /node_modules && chown -R node /usr/local/lib/node_modules && chown -R node /usr/local/bin 
+RUN mkdir /node_modules && chmod 755 /node_modules && chown node /node_modules
 
 
 # Copiar el fichero de configuración a nuestra imagen
