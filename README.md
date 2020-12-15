@@ -23,24 +23,30 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 - docker run -t -v `pwd`:/test frantoba/cloudfood
 ~~~
 
-## Uso de sistemas serverless
+## Microservicios
 
-- 1 y 2. Despliegue correcto (Vercel) y funcionando e integración dentro del proyecto general. Consultar esta [documentación](./docs/vercel.md).
-- 3 Y 4. Uso de otra plataforma de despliegue (Netlify) y creación de bot. Consultar esta [documentación](./docs/netlify.md).
+- 1. Justificación y usa del framework elegido. Consultar esta [documentación](./docs/express.md).
+- 2, 3 y 4. [Documentación](./docs/microapi.md) sobre la [API](./src/index.js) creada, uso de buenas prácticas y los [tests](./tests/index.test.js) correspondientes.
+
+- Avance de código:
+	- Se ha modificado la clase [menu.js](./src/menu.js) creando un constructor al que no haya que indicarle los platos, añadiendo setters para los platos ([Issue #51](https://github.com/FranToBa/CloudFood/issues/51)).
+	- Se ha añadido un nuevo método que devuelve el tipo de un plato específico.
+	- Se ha añadido un nuevo método relacionado con la [HU06](https://github.com/FranToBa/CloudFood/issues/22) que devuelve el precio de un plato específico, usando el método anterior sobre el tipo de plato y devolviendo su precio ([Issue #46](https://github.com/FranToBa/CloudFood/issues/46)).
 
 
 
 ## Enlaces de interes
 
-#### Documentación
-- [Configuración incial de git](./docs/configuracion_inicial.md).
-- [Pasos seguidos](./docs/pasos.md).
-- [Herramientas](./docs/herramientas.md).
-
 #### Índices de rúbricas pasadas
 - [Justificación de gestores](./docs/just_her.md).
 - [Índice sobre información de DOCKER](./docs/indicedocker.md).
 - [Integración continua](./docs/icont.md)
+- [Serverless](./docs/serverless.md)
+
+#### Documentación
+- [Configuración incial de git](./docs/configuracion_inicial.md).
+- [Pasos seguidos](./docs/pasos.md).
+- [Herramientas](./docs/herramientas.md).
 
 #### Progreso
 - Carpeta de [código](./src) del proyecto.
