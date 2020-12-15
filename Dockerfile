@@ -2,29 +2,34 @@ FROM node:15.0.1-alpine3.10
 
 Label maintainer="Francisco Javier Torres Barea" version="1.0" 
 
+RUN adduser -S usuario
+
+RUN mkdir node_modules \
+    && chown -R usuario node_modules \
+    && apk add --update nodejs npm make \
+    && npm i -g grunt-cli grunt-run
 
 
-RUN npm i -g grunt-cli grunt-run supertest express && mkdir /node_modules && chmod 755 /node_modules && chown node /node_modules
-
-USER node
-
-COPY --chown=node package*.json ./
-COPY  Gruntfile.js ./
-RUN npm install
+USER usuario
 
 
+COPY package.json ./
+
+
+RUN npm install && rm -rf /var/lib/apt/lists/*
 
 USER root
 
 
+RUN rm package.json
 
-VOLUME /test
+
+USER usuario
+
+
+ENV PATH=/node_modules/.bin:$PATH
+
 WORKDIR /test
 
-RUN chown -R node /test
-
-ENV PATH /node_modules/.bin:$PATH 
-
-# para ejecutar los test
 CMD ["grunt","test"]
 
