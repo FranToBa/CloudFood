@@ -2,7 +2,7 @@ FROM alpine:3.10.5
 
 Label maintainer="Francisco Javier Torres Barea" version="1.0" 
 
-RUN adduser -S node
+RUN adduser -S usuario
 
 RUN mkdir node_modules \
     && chown -R usuario node_modules \
