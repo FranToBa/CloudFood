@@ -1,4 +1,4 @@
-FROM node:15.0.1-alpine3.10
+FROM alpine:3.10.5
 
 Label maintainer="Francisco Javier Torres Barea" version="1.0" 
 
