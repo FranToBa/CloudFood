@@ -4,11 +4,10 @@ const port = process.env.port || 8080
 const Menu = require('./menu')
 const morgan = require('morgan')
 
-
 var menu = new Menu()
 
 
-// Establecemos el loger con formato tiny
+// Establecemos el logger con formato tiny
 app.use(morgan('tiny')) 
 
 // Devuelve un mensaje de bienvenida
