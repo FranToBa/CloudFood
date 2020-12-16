@@ -19,11 +19,11 @@ Además se ha añadido otra ruta con *get* para consultar el menú seleccionado.
 
 ![](./imagenes/crearmenu.png)
 
-![](./imagenes/crearmenu1.png)
+![](./imagenes/crearmenu2.png)
 
 Si probamos con un postre que no está disponible:
 
-![](./imagenes/crearmenu2.png)
+![](./imagenes/crearmenu1.png)
 
 Para la [HU03: como usuario quiero modificar el menú seleccionado](https://github.com/FranToBa/CloudFood/issues/4), hemos usado *put* y la ruta */menu/modificar/:tipo/:plato*. Recogemos los parámetros y comprobamos si se han pasado los argumentos correctos y además si el tipo de plato indicado es correcto, si no devolvemos error de argumentos. Si los argumentos son correctos, modificamos el plato dependiendo del tipo de plato indicado.
 
