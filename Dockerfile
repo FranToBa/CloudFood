@@ -14,11 +14,16 @@ COPY Gruntfile.js ./
 
 USER node
 
-RUN npm install && rm -rf /var/lib/apt/lists/*
+RUN npm install
 
 VOLUME /test
 WORKDIR /test
 
+USER root
+RUN rm package*.json
+RUN chown -R node /test
+
+USER node
 ENV PATH=/node_modules/.bin:$PATH
 
 CMD ["grunt","test"]
