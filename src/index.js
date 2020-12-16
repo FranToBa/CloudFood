@@ -6,7 +6,6 @@ const morgan = require('morgan')
 
 var menu = new Menu()
 
-
 // Establecemos el logger con formato tiny
 app.use(morgan('tiny')) 
 
@@ -134,7 +133,6 @@ app.get('/preciosPlato/:plato?', function(req, res) {
         res.status(400).send("Error en los argumentos.")
     }
 });
-
 
 
 module.exports = app
