@@ -114,7 +114,7 @@ describe("GET /preciosCarta", function() {
 });
 
 /* Consulta de precios platos específicos*/
-describe("GET /preciosCarta", function() {
+describe("GET /preciosPlato", function() {
   it("Testeando consulta de precios de plato específico", function(done) {
     request(app)
       .get('/preciosPlato/Pasta')
@@ -132,12 +132,5 @@ describe("GET /preciosCarta", function() {
       .expect(400,done);
   });
 });
-
-
-
-
-
-
-
 
 
