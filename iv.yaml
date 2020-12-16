@@ -3,3 +3,4 @@ lenguaje: JavaScript
 test: tests/menu.test.js
 taskfile: package.json
 URL: https://cloud-food.vercel.app/api/seleccionmenu.js?numMenu=1
+make: grunt
