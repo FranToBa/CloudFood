@@ -20,7 +20,6 @@ VOLUME /test
 WORKDIR /test
 
 USER root
-RUN rm package*.json
 RUN chown -R node /test
 
 USER node
