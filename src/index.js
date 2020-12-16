@@ -51,10 +51,9 @@ app.post('/menu/:entrante?/:plato?/:postre?', function(req, res) {
     } else {
         res.status(400).send("Error en los argumentos.")
     }   
-} );
+});
 
 /* Permite consultar el menu seleccionado */
-
 app.get('/menu', function(req, res) {
     res.send( {'Menu seleccionado': menu.mostrarMenuSeleccionado() } );
 });
