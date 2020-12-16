@@ -2,8 +2,6 @@ FROM node:14-alpine
 
 Label maintainer="Francisco Javier Torres Barea" version="1.0" 
 
-RUN adduser -S node
-
 RUN mkdir node_modules \
     && chown -R node node_modules \
     && chown -R node /usr/local/bin \
