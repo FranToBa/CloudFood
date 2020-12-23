@@ -123,17 +123,13 @@ app.get('/carta/precios/:tipo', function(req, res) {
 });
 
 /* Permite la consulta del precio de un plato especifico */
-app.get('/carta/precios/plato/:plato?', function(req, res) {
+app.get('/carta/precios/plato/:plato', function(req, res) {
    var plato = req.params.plato
-   if( plato ){
 	try{
 	    res.send( {"Precio": menu.consultarPrecioPlato(plato) } );       
         } catch (error){
             res.status(404).send( error.message )
         }
-    } else {
-        res.status(400).send("Error en los argumentos.")
-    }
 });
 
 
