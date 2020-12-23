@@ -10,7 +10,7 @@ var carta = new Menu();
 
 app.use(function timeLog(req, res, next) {
   var fecha = new Date();
-  console.log('Time: ', fecha, 'Method: ',res.statusCode, 'URI: ', req.url, 'Status: ', res.statusCode );
+  console.log('Time: ', fecha, 'Method: ',req.method, 'URI: ', req.url, 'Status: ', res.statusCode );
   next();
 });
 
@@ -39,27 +39,24 @@ app.get('/carta/postres', function(req, res) {
 });
 
 /* Permite la creacion de un menu */
-app.post('/menu/:entrante?/:plato?/:postre?', function(req, res) {
+app.put('/menu/:entrante/:plato/:postre', function(req, res) {
     var entrante = req.params.entrante
     var plato = req.params.plato
     var postre = req.params.postre
-
-    //Vemos si estan vacios
-    if( entrante && plato && postre ){
-        try{
+    try{
+	    let menu = new Menu();
             menu.setPlatos(entrante, plato, postre)
-            res.send( {'Menu añadido': menu.mostrarMenuSeleccionado() } );
-        } catch (error){
-            res.status(409).send( error.message )
-        }
-        
-    } else {
-        res.status(400).send("Error en los argumentos.")
-    }   
+	    var id = pedidos.push(menu);
+            res.send( {'Menu añadido': menu.mostrarMenuSeleccionado(), 'ID': id  } );
+     } catch (error){
+            res.status(400).send( error.message )
+     }
+           
 });
 
 /* Permite consultar el menu seleccionado */
-app.get('/menu', function(req, res) {
+app.get('/menu/:id', function(req, res) {
+    var menu = pedidos[id]
     res.send( {'Menu seleccionado': menu.mostrarMenuSeleccionado() } );
 });
 
