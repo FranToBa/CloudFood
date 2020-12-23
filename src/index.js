@@ -62,78 +62,68 @@ app.get('/menu/:id', function(req, res) {
     	res.send( {'Menu seleccionado': menu.mostrarMenuSeleccionado() } );
     }else{
 	res.status(400).send( "El id no corresponde a ningún menú." )	
-    };
+    }
 });
 
 /* Permite la modificacion de un menú */
 app.post('/menu/:id', function(req, res) {
 
     var id = req.params.id
-    var tipo = req.body.tipo
     var plato = req.body.plato
-
-    //Vemos si estan vacios
-    if(tipo=='entrante' || tipo=='principal' || tipo=='postre'){
-        try{
-	    switch(tipo){
-		case 'entrante':
-			menu.modificarEntrante(plato)
-		break;
-		case 'principal':
-			menu.modificarEntrante(plato)
-		break;
-		case 'postre':
-			menu.modificarEntrante(plato)
-		break;
-	    }
-            res.send( {"Plato modificado": plato } );
-        } catch (error){
-	    //Error 400: el plato indicado no es de ese tipo
-            res.status(400).send( error.message )
-        }
-        
-    } else {
-	//Error 404: No existe ese tipo de plato
-        res.status(404).send("Error en los argumentos. Tipos: entrante, principal o postre")
-    }   
+    var tipo = req.body.tipo  
+    var menu = pedidos[id]
+    if( menu && (tipo=='entrante' || tipo=='principal' || tipo=='postre')){
+	try{
+		switch(tipo){
+			case 'entrante':
+				menu.modificarEntrante(plato)
+			break;
+			case 'principal':
+				menu.modificarEntrante(plato)
+			break;
+			case 'postre':
+				menu.modificarEntrante(plato)
+			break;
+		  }
+		  res.send( {"Plato modificado": plato } );
+		} catch (error){
+		    //Error 400: el plato indicado no es de ese tipo
+		    res.status(400).send( error.message )
+		}
+ 
+    }else{
+	res.status(404).send( "El id no corresponde a ningún menú o el tipo no es correcto" )	
+    } 
 } );
 
 /* Permite la consulta del precio de todos los platos */
-app.get('/preciosCarta', function(req, res) {
-	res.send( {'Entrantes': menu.consultarPrecioEntrantes(), 'Principales': menu.consultarPrecioPlatos(), 'Postres': menu.consultarPrecioPostres() }  );	
+app.get('/carta/precios', function(req, res) {
+	res.send( {'Entrantes': carta.consultarPrecioEntrantes(), 'Principales': carta.consultarPrecioPlatos(), 'Postres': carta.consultarPrecioPostres() }  );	
 
 });
 /* Permite la consulta del precio de los platos */
 /* Puede indicar el tipo de los platos de los que quiere saber el precio*/
-app.get('/preciosCarta/:tipo', function(req, res) {
+app.get('/carta/precios/:tipo', function(req, res) {
    var tipo = req.params.tipo
-   if( tipo && (tipo=='entrantes' || tipo=='principales' || tipo=='postres') ){
-	try{
-	    switch(tipo){
+   if(tipo=='entrantes' || tipo=='principales' || tipo=='postres'){
+	switch(tipo){
 		case 'entrantes':
-			res.send( {"Precio entrantes": menu.consultarPrecioEntrantes() } );
+			res.send( {"Precio entrantes": carta.consultarPrecioEntrantes() } );
 		break;
 		case 'principales':
-			res.send( {"Precio principales": menu.consultarPrecioPlatos() } );
+			res.send( {"Precio principales": carta.consultarPrecioPlatos() } );
 		break;
 		case 'postres':
-			res.send( {"Precio postres": menu.consultarPrecioPostres() } );
-		break;
-		default:
-			res.status(409).send( error.message )
+			res.send( {"Precio postres": carta.consultarPrecioPostres() } );
 		break;
 	    }
-            
-        } catch (error){
-            res.status(409).send( error.message )
-        }
     } else {
         res.status(400).send("Error en los argumentos.")
     }
 });
 
 /* Permite la consulta del precio de un plato especifico */
-app.get('/preciosPlato/:plato?', function(req, res) {
+app.get('/carta/precios/plato/:plato?', function(req, res) {
    var plato = req.params.plato
    if( plato ){
 	try{
