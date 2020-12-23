@@ -6,7 +6,7 @@ const Menu = require('./menu')
 
 
 var pedidos = []
-
+var carta = new Menu();
 
 app.use(function timeLog(req, res, next) {
   var fecha = new Date();
@@ -21,21 +21,21 @@ app.get('/', function(req, res) {
 });
 
 /* Permite la consulta de todos los platos o de platos según su tipo.*/
-app.get('/menus', function(req, res) {
-	res.send({'Entrantes': menu.mostrarEntrantes(), 'Principales': menu.mostrarPlatos(), 'Postres': menu.mostrarPostres()});
+app.get('/carta', function(req, res) {
+	res.send({'Entrantes': carta.mostrarEntrantes(), 'Principales': carta.mostrarPlatos(), 'Postres': carta.mostrarPostres()});
 	
 });
 
-app.get('/entrantes', function(req, res) {
-	res.send({'Entrantes': menu.mostrarEntrantes() } );
+app.get('/carta/entrantes', function(req, res) {
+	res.send({'Entrantes': carta.mostrarEntrantes() } );
 });
 
-app.get('/principales', function(req, res) {
-    res.send({'Principales': menu.mostrarPlatos() } );
+app.get('/carta/principales', function(req, res) {
+    res.send({'Principales': carta.mostrarPlatos() } );
 });
 
-app.get('/postres', function(req, res) {
-    res.send({'Postres': menu.mostrarPostres() } );
+app.get('/carta/postres', function(req, res) {
+    res.send({'Postres': carta.mostrarPostres() } );
 });
 
 /* Permite la creacion de un menu */
