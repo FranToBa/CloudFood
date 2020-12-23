@@ -1,13 +1,19 @@
 const express = require('express')
 const app = express()
 const port = process.env.port || 5000
+var router = express.Router();
 const Menu = require('./menu')
-const morgan = require('morgan')
 
-var menu = new Menu()
 
-// Establecemos el logger con formato tiny
-app.use(morgan('tiny')) 
+var pedidos = []
+
+
+app.use(function timeLog(req, res, next) {
+  var fecha = new Date();
+  console.log('Time: ', fecha, 'Method: ',res.statusCode, 'URI: ', req.url, 'Status: ', res.statusCode );
+  next();
+});
+
 
 // Devuelve un mensaje de bienvenida
 app.get('/', function(req, res) {
@@ -132,6 +138,11 @@ app.get('/preciosPlato/:plato?', function(req, res) {
     } else {
         res.status(400).send("Error en los argumentos.")
     }
+});
+
+
+app.listen(port, function() {
+  console.log('Escuchando el puerto ' + port);
 });
 
 
