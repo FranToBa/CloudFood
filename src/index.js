@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-var router = express.Router();
 const Menu = require('./menu')
 var body_parser = require('body-parser');
 const { Etcd3 } = require('etcd3');
