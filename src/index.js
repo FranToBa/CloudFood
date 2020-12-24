@@ -9,7 +9,6 @@ let etcd = new Etcd3();
 var p = process.env.port
 const port = p || 5000;
 
-
 var pedidos = []
 var carta = new Menu();
 
