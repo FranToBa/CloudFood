@@ -42,22 +42,17 @@ describe("GET de la carta", function() {
 
 
 /* Creación de un menú*/
-describe("POST /menu/:entrate?/:plato?/:postre?", function() {
+describe("PUT /menu/:entrate/:plato/:postre", function() {
   it("Testeando creación de un menú con platos no validos", function(done) {
     request(app)
-      .post('/menu/Sopa/Calamares/Fruta')
-      .expect(409,done);
-  });
-  it("Testeando creación de un menú con falta de platos", function(done) {
-    request(app)
-      .post('/menu/Sopa/Carne')
+      .put('/menu/Sopa/Calamares/Fruta')
       .expect(400,done);
   });
   it("Testeando creación de un menú", function(done) {
     request(app)
-      .post('/menu/Sopa/Carne/Fruta')
+      .put('/menu/Sopa/Carne/Fruta')
       .expect('Content-Type', 'application/json; charset=utf-8')
-      .expect(200,done);
+      .expect(201,done);
   });
 });
 
