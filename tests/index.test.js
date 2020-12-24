@@ -16,25 +16,25 @@ describe("GET /", function() {
 describe("GET de la carta", function() {
   it("Testeando la consulta de menús", function(done) {
     request(app)
-      .get('/menus')
+      .get('/carta')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
   it("Testeando consulta de entrantes", function(done) {
     request(app)
-      .get('/entrantes')
+      .get('/carta/entrantes')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
   it("Testeando consulta de platos principales", function(done) {
     request(app)
-      .get('/principales')
+      .get('/carta/principales')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
   it("Testeando consulta de postres", function(done) {
     request(app)
-      .get('/postres')
+      .get('/carta/postres')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
