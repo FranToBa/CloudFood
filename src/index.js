@@ -155,9 +155,5 @@ app.use(function(err, req, res, next){
   });
 
 
-app.listen(port, function() {
-  console.log('Escuchando el puerto ' + port);
-});
-
 
 module.exports = app
