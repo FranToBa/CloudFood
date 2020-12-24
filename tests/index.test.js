@@ -119,22 +119,22 @@ describe("DELETE del menu", function() {
 
 
 /* Consulta de precios de la carta o clasificados por tipo*/
-describe("GET /preciosCarta", function() {
+describe("GET /carta/precios", function() {
   it("Testeando consulta de precios", function(done) {
     request(app)
-      .get('/preciosCarta')
+      .get('/carta/precios')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
   it("Testeando consulta de precios de entrantes", function(done) {
     request(app)
-      .get('/preciosCarta/entrantes')
+      .get('/carta/precios/entrantes')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
   it("Testeando consulta de precios de tipo que no existe", function(done) {
     request(app)
-      .get('/preciosCarta/aperitivo')
+      .get('/carta/precios/aperitivo')
       .expect(400,done);
   });
 });
