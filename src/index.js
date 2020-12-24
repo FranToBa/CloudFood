@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 var router = express.Router();
 const Menu = require('./menu')
+var body_parser = require('body-parser');
 const { Etcd3 } = require('etcd3');
 
 let etcd = new Etcd3();
@@ -11,6 +12,9 @@ const port = p || 5000;
 
 var pedidos = []
 var carta = new Menu();
+
+app.use(body_parser.json());
+app.use(body_parser.urlencoded({extended:true}));
 
 app.use(function timeLog(req, res, next) {
   var fecha = new Date();
@@ -71,7 +75,6 @@ app.get('/menu/:id', function(req, res) {
 
 /* Permite la modificacion de un menú */
 app.post('/menu/:id', function(req, res) {
-
     var id = req.params.id
     var plato = req.body.plato
     var tipo = req.body.tipo  
@@ -143,7 +146,7 @@ app.get('/carta/precios/:tipo', function(req, res) {
 app.get('/carta/precios/plato/:plato', function(req, res) {
    var plato = req.params.plato
 	try{
-	    res.send( {"Precio": menu.consultarPrecioPlato(plato) } );       
+	    res.send( {"Precio": carta.consultarPrecioPlato(plato) } );       
         } catch (error){
             res.status(404).send( error.message )
         }
@@ -154,7 +157,9 @@ app.use(function(err, req, res, next){
    res.status(500).send(err.message);
   });
 
-
+app.listen(port, function() {
+  console.log('Escuchando el puerto ' + port);
+});
 
 
 module.exports = app
