@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express()
-const port = process.env.port || 5000
 var router = express.Router();
 const Menu = require('./menu')
+const { Etcd3 } = require('etcd3');
+
+let etcd = new Etcd3();
+var p = process.env.port
+const port = p || 5000;
 
 
 var pedidos = []
