@@ -140,22 +140,17 @@ describe("GET /carta/precios", function() {
 });
 
 /* Consulta de precios platos específicos*/
-describe("GET /preciosPlato", function() {
+describe("GET /carta/precios/:plato", function() {
   it("Testeando consulta de precios de plato específico", function(done) {
     request(app)
-      .get('/preciosPlato/Pasta')
+      .get('/carta/precios/plato/Carne')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
   it("Testeando consulta de precios de un plato que no existe", function(done) {
     request(app)
-      .get('/preciosPlato/Patatas')
-      .expect(409,done);
-  });
-  it("Testeando consulta de precios de un plato sin indicarlo", function(done) {
-    request(app)
-      .get('/preciosPlato')
-      .expect(400,done);
+      .get('/carta/precios/plato/Patatas')
+      .expect(404,done);
   });
 });
 
