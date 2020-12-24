@@ -2,63 +2,58 @@
 
 Para nuestra API vamos a usar Express como hemos dicho anteriormente. Para ello hemos creado el fichero [index.js](../src/index.js), el cuál vamos a explicar paso a paso:
 
-Para empezar incluimos el módulo de express y creamos la aplicación. Asignamos el puerto, 5000 en este caso, e incluimos nuestra clase menú.
+Para empezar incluimos el módulo de express y creamos la aplicación. Incluimos nuestra clase menú y añadimos los middlewares Body-parser y Etcd3 que explicaremos más tarde.
 
-![](./imagenes/introapi.png)
+Ahora, debemos crear las funciones encargadas de actuar con las peticios GET, POST, PUT y DELETE. 
 
-Ahora, debemos crear las funciones encargadas de actuar con las peticios GET, POST o PUT (en este caso no he usado DELETE). 
+Para esta API, he creado un vector de Pedidos que recogerá los diferentes menús, ya que más adelante se incluirá una base de datos que nos servirá para esto. Los ids de los diferentes menús serán tratados como índices de "pedidos".
 
-Las primeras funciones implementadas tienen que ver con la [HU01: como usuario quiero consultar los menús disponibles](https://github.com/FranToBa/CloudFood/issues/2). Para ello se ha usado el método *get* y la ruta */menus*, devolviendo la lista de los platos disponibles en formato JSON(tambíen se pueden obtener indicando entrantes, principales o postres):
+Las primeras funciones implementadas tienen que ver con la [HU01: como usuario quiero consultar los menús disponibles](https://github.com/FranToBa/CloudFood/issues/2). Para ello se ha usado el método *get* y la ruta */carta*, devolviendo la lista de los platos disponibles en formato JSON(tambíen se pueden obtener indicando entrantes, principales o postres):
 
 ![](./imagenes/getmenus.png)
 
-![](./imagenes/getmenus1.png)
-
-Para la [HU02: como usuario quiero seleccionar menú](https://github.com/FranToBa/CloudFood/issues/3) he usado *post* con la ruta */menu/:entrante?/:plato?/:postre?*. Recogemos los parámetros con req.params y comprobamos si están vacios (se añade la interrogación para que reconozca la ruta si falta alguno, y en ese caso notificar el error de argumentos). Si los argumentos son correctos, se llama a la función encargada de crear un menú y devolvemos OK.
+Para la [HU02: como usuario quiero seleccionar menú](https://github.com/FranToBa/CloudFood/issues/3) he usado *put* con la ruta */menu/:entrante/:plato/:postre*. Recogemos los parámetros con req.params . Si los argumentos son correctos, creamos un nuevo menú, lo añadimos a los pedidos y devolvemos OK con el id correspondiente. Si algún plato no está disponible, devolvemos el error que devuelve nuestra función.
 Además se ha añadido otra ruta con *get* para consultar el menú seleccionado. 
 
 ![](./imagenes/crearmenu.png)
 
-![](./imagenes/crearmenu2.png)
 
-Si probamos con un postre que no está disponible:
-
-![](./imagenes/crearmenu1.png)
-
-Para la [HU03: como usuario quiero modificar el menú seleccionado](https://github.com/FranToBa/CloudFood/issues/4), hemos usado *put* y la ruta */menu/modificar/:tipo/:plato*. Recogemos los parámetros y comprobamos si se han pasado los argumentos correctos y además si el tipo de plato indicado es correcto, si no devolvemos error de argumentos. Si los argumentos son correctos, modificamos el plato dependiendo del tipo de plato indicado.
+Para la [HU03: como usuario quiero modificar el menú seleccionado](https://github.com/FranToBa/CloudFood/issues/4), hemos usado *post* y la ruta */menu/:id*. Recogemos los parámetros (los parámetros a modificar los recogemos del body) y comprobamos los argumentos: si el id o el tipo no son correctos o si el plato no está disponible. Si los argumentos son correctos, modificamos el plato dependiendo del tipo de plato indicado.
+Por otra parte, se ha incluido un DELETE que recoge el id y borra ese menú. Da error si no existe menú con ese id.
 
 ![](./imagenes/modificarmenu.png)
 
-![](./imagenes/modificarmenu1.png)
 
-Respecto a la [HU06: Como usuario quiero consultar el precio de los platos](https://github.com/FranToBa/CloudFood/issues/22), se han implementado 3 rutas con *get* diferentes: con */preciosCarta* podemos ver los precios de todos los platos, con */preciosCarta/:tipo* podemos ver los precios de los platos de tipo indicado y por último, con */preciosPlato/:plato* podemos ver el precio de un plato específico:
+Respecto a la [HU06: Como usuario quiero consultar el precio de los platos](https://github.com/FranToBa/CloudFood/issues/22), se han implementado 3 rutas con *get* diferentes: con */carta/precios* podemos ver los precios de todos los platos, con */carta/precios/:tipo* podemos ver los precios de los platos de tipo indicado y por último, con */preciosPlato/:plato* podemos ver el precio de un plato específico:
 
 ![](./imagenes/preciosmenu.png)
 
-![](./imagenes/preciosmenu1.png)
 
 
-## Morgan como logger
+## Middlewares
 
-Como middleware de log voy a usar Morgan, ya que consultando los middlwares de terceros de Express [aquí](https://expressjs.com/es/resources/middleware.html), ví que Morgan tenía un [repositorio](https://github.com/expressjs/morgan) en el que había buena información sobre su uso. Siguiendo los pasos de ese repositorio, lo instalamos e incluimos lo necesario en nuestro index.js.
+Para empezar vamos a hablar sobre la función middleware que he creado para el log:
 
-Para el uso de Morgan, debemos incluir el módulo con:
-~~~
-var morgan = require('morgan')
-~~~
+![](./imagenes/funcmid.png)
 
-Indicamos a nuesta app que use morgan, en este caso en formato 'tiny':
+En esta función decimos a nuestra app que muestre por consola la fecha, el método usado, la url y el estado de respuesta.
 
-![](./imagenes/morgan.png)
+También se ha usado body-parser como middleware para poder recoger los datos del body para el POST. Para ello hemos indicado a nuestra app que acepte datos JSON y urlencoded.
 
-Esto mostrará el log por consola (stdout por defecto al llamar a morgan) con el formato:
-~~~
-:method :url :status :res[content-length] - :response-time ms
-~~~
+![](./imagenes/bodyparser.png)
 
-Aquí tenemos el ejemplo de su uso:
 
-![](./imagenes/morgan2.png)
+### ETCD
+
+Por útimo, se ha usado etcd configuración distribuida. Se ha usado de forma sencilla, en un nuevo archivo [server.js](../src/server.js) que se usaría para arrancar el servidor. En este código establecemos el puerto de nuestro servidor de forma que si existe una variable de entorno "port" se usa esa y si no, se usa la 5000 por defecto.
+
+![](./imagenes/etcds.png)
+
+
+
+
+
+
 
 
 
