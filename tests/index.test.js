@@ -60,31 +60,62 @@ describe("PUT /menu/:entrate/:plato/:postre", function() {
 describe("GET del menu", function() {
   it("Testeando la consulta del menú seleccionado", function(done) {
     request(app)
-      .get('/menu')
+      .get('/menu/0')
+      .expect('Content-Type', 'application/json; charset=utf-8')
+      .expect(200,done);
+  });
+  it("Testeando la consulta del menú seleccionado que no existe", function(done) {
+    request(app)
+      .get('/menu/100')
+      .expect(400,done);
+  });
+});
+
+/* Modificación de un menú*/
+describe("POST /menu/:id", function() {
+  it("Testeando modificación de menu con plato no disponible", function(done) {
+    request(app)
+      .post('/menu/0')
+      .send({tipo:'entrante', plato:'Patatas'})
+      .expect(400,done);
+  });
+  it("Testeando modificación de un menu con tipo ni disponible", function(done) {
+    request(app)
+      .post('/menu/0')
+      .send({tipo:'aperitivo', plato:'Pasta'})
+      .expect(404,done);
+  });
+  it("Testeando modificación de un menu no existente", function(done) {
+    request(app)
+      .post('/menu/100')
+      .send({tipo:'entrante', plato:'Pasta'})
+      .expect(404,done);
+  });
+  it("Testeando modificación de un menu", function(done) {
+    request(app)
+      .post('/menu/0')
+      .send({tipo:'entrante', plato:'Pasta'})
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
 });
 
-/* Modificación de un menú*/
-describe("PUT /menu/:tipo/:plato", function() {
-  it("Testeando modificación del plato de un menu con tipo no disponible", function(done) {
+
+/* Borrar menu seleccionado */
+describe("DELETE del menu", function() {
+  it("Testeando la consulta de borrado menú no válido", function(done) {
     request(app)
-      .put('/menu/modificar/aperitivo/Patatas')
+      .get('/menu/100')
       .expect(400,done);
   });
-  it("Testeando modificación de un plato del menu con plato no válido", function(done) {
+  it("Testeando la consulta del menú seleccionado que no existe", function(done) {
     request(app)
-      .put('/menu/modificar/entrante/Patatas')
-      .expect(409,done);
-  });
-  it("Testeando modificación de un menu", function(done) {
-    request(app)
-      .put('/menu/modificar/entrante/Pasta')
+      .get('/menu/0')
       .expect('Content-Type', 'application/json; charset=utf-8')
       .expect(200,done);
   });
 });
+
 
 
 /* Consulta de precios de la carta o clasificados por tipo*/
