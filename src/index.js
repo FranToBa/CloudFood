@@ -43,14 +43,14 @@ app.put('/menu/:entrante/:plato/:postre', function(req, res) {
     var entrante = req.params.entrante
     var plato = req.params.plato
     var postre = req.params.postre
-     try{
+    try{
 	  let menu = new Menu();
           menu.setPlatos(entrante, plato, postre)
 	  pedidos.push(menu); 
           res.status(201).send( {'Menu añadido': menu.mostrarMenuSeleccionado(), 'ID': pedidos.indexOf(menu)  } );
-      } catch (error){
+    } catch (error){
             res.status(400).send( error.message )
-      }
+    }
            
 });
 
@@ -58,7 +58,7 @@ app.put('/menu/:entrante/:plato/:postre', function(req, res) {
 app.get('/menu/:id', function(req, res) {
     var id = req.params.id
     var menu = pedidos[id]
-    if( menu){
+    if( menu && menu != "Borrado" ){
     	res.send( {'Menu seleccionado': menu.mostrarMenuSeleccionado() } );
     }else{
 	res.status(400).send( "El id no corresponde a ningún menú." )	
@@ -84,17 +84,30 @@ app.post('/menu/:id', function(req, res) {
 			case 'postre':
 				menu.modificarEntrante(plato)
 			break;
-		  }
-		  res.send( {"Plato modificado": plato } );
-		} catch (error){
-		    //Error 400: el plato indicado no es de ese tipo
-		    res.status(400).send( error.message )
 		}
- 
+		res.send( {"Plato modificado": plato } );
+             } catch (error){
+		//Error 400: el plato indicado no es de ese tipo
+		res.status(400).send( error.message )
+ 	     }
     }else{
 	res.status(404).send( "El id no corresponde a ningún menú o el tipo no es correcto" )	
     } 
 } );
+
+/* Permite borrar el menú seleccionado, reemplazando su posición para no cambiar los ids */
+app.delete('/menu/:id', function(req, res) {
+    var id = req.params.id
+    var menu = pedidos[id]
+    if( menu){
+        pedidos.splice(id, 1, "Borrado")
+    	res.send( {'Menu borrado': id } );
+    }else{
+	res.status(400).send( "El id no corresponde a ningún menú." )	
+    }
+});
+
+
 
 /* Permite la consulta del precio de todos los platos */
 app.get('/carta/precios', function(req, res) {
@@ -118,7 +131,7 @@ app.get('/carta/precios/:tipo', function(req, res) {
 		break;
 	    }
     } else {
-        res.status(400).send("Error en los argumentos.")
+        res.status(400).send("Error en los argumentos.Tipo no encontrado")
     }
 });
 
