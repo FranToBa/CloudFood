@@ -4,7 +4,7 @@ var Etcd = require('node-etcd');
 let etcd = new Etcd("127.0.0.1:2231");
 var p;
 etcd.get("port", p);
-const port = p || 5000;
+const port = p || 8080;
 
 
 app.listen(port, () => {

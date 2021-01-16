@@ -1,13 +1,17 @@
 const express = require('express')
 const app = express()
-const Menu = require('./menu')
 var body_parser = require('body-parser');
+const mongoose = require('mongoose');
+require('dotenv').config({ path: '../../.env' })
+let Menu = require('./models/bdmenus')
+let Plato = require('./models/bdplatos')
 
-var pedidos = []
-var carta = new Menu();
-
-app.use(body_parser.json());
+app.use(body_parser.text());
 app.use(body_parser.urlencoded({extended:true}));
+app.use(body_parser.json({ type: 'application/json'}));
+
+mongoose.connect(`${process.env.CONNECTION}`, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 app.use(function timeLog(req, res, next) {
   var fecha = new Date();
@@ -15,55 +19,90 @@ app.use(function timeLog(req, res, next) {
   next();
 });
 
+app.get('/', function(req,res){
+  res.status(200).json({status:"OK"});
+})
 
-// Devuelve un mensaje de bienvenida
-app.get('/', function(req, res) {
-  res.send( JSON.stringify("Bienvenido a la paǵina de inicio de CloudFood") )
-});
+app.get('/status', function(req,res){
+  res.status(200).json({status:"OK"});
+})
 
-/* Permite la consulta de todos los platos o de platos según su tipo.*/
-app.get('/carta', function(req, res) {
-	res.send({'Entrantes': carta.mostrarEntrantes(), 'Principales': carta.mostrarPlatos(), 'Postres': carta.mostrarPostres()});
+/* Permite la consultar los pedidos realizados.*/
+app.get('/carta', async function(req, res) {
+	try{
+		let carta = await Plato.find({})
+		res.status(200).json(carta)
+}catch(error){
+	res.status(400).send(error)
+}
 	
 });
 
-app.get('/carta/entrantes', function(req, res) {
-	res.send({'Entrantes': carta.mostrarEntrantes() } );
+app.get('/carta/entrantes',async function(req, res) {
+	let entrantes = await Plato.find({Tipo: "Entrante"});
+	res.status(200).json(entrantes)
 });
 
-app.get('/carta/principales', function(req, res) {
-    res.send({'Principales': carta.mostrarPlatos() } );
+app.get('/carta/principales', async function(req, res) {
+	let principales = await Plato.find({Tipo: "Principal"});
+	res.status(200).json(principales)
 });
 
-app.get('/carta/postres', function(req, res) {
-    res.send({'Postres': carta.mostrarPostres() } );
+app.get('/carta/postres', async function(req, res) {
+	let postres = await Plato.find({Tipo: "Postre"});
+	res.status(200).json(postres)
+});
+
+
+/* Permite la creacion de un menu */
+app.post('/menu', async function(req, res) {
+	try{
+		const menu = new Menu({
+			Entrante: req.body.entrante, 
+			Principal: req.body.principal, 
+			Postre: req.body.postre
+		  })
+		try{
+		    const addMenu = await menu.save()
+		    res.set('Location',`/menu/${addMenu.type}`)
+		    res.status(201).json(addMenu)
+		}catch(err){
+		    res.status(400).json(err)
+		}
+	}catch(err){
+		res.status(400).json(err)
+	}
 });
 
 /* Permite la creacion de un menu */
-app.put('/menu/:entrante/:plato/:postre', function(req, res) {
-    var entrante = req.params.entrante
-    var plato = req.params.plato
-    var postre = req.params.postre
-    try{
-	  let menu = new Menu();
-          menu.setPlatos(entrante, plato, postre)
-	  pedidos.push(menu); 
-          res.status(201).send( {'Menu añadido': menu.mostrarMenuSeleccionado(), 'ID': pedidos.indexOf(menu)  } );
-    } catch (error){
-            res.status(400).send( error.message )
-    }
-           
+app.post('/plato', async function(req, res) {
+	const plato = new Plato({
+		Plato: req.body.plato, 
+		Tipo: req.body.tipo
+	  })
+	try{
+	    const addMenu = await plato.save()
+	    //res.set('Location',`/menu/${addMenu.type}`)
+	    res.status(201).json(addMenu)
+	}catch(err){
+	    res.status(400).json(err)
+	}
 });
 
+
+
+
 /* Permite consultar el menu seleccionado */
-app.get('/menu/:id', function(req, res) {
-    var id = req.params.id
-    var menu = pedidos[id]
-    if( menu && menu != "Borrado" ){
-    	res.send( {'Menu seleccionado': menu.mostrarMenuSeleccionado() } );
-    }else{
-	res.status(400).send( "El id no corresponde a ningún menú." )	
+app.get('/menu/:id', async function(req, res) {
+  let id = req.params.id
+  try{
+  	let menu = await Menu.findById(id)
+	res.status(200).json(menu)
+}
+  catch(error){
+      res.status(500).send(error)
     }
+
 });
 
 /* Permite la modificacion de un menú */
@@ -71,67 +110,91 @@ app.post('/menu/:id', function(req, res) {
     var id = req.params.id
     var plato = req.body.plato
     var tipo = req.body.tipo  
-    var menu = pedidos[id]
-    if( menu && (tipo=='entrante' || tipo=='principal' || tipo=='postre')){
+    if(tipo=='entrante' || tipo=='principal' || tipo=='postre'){
 	try{
 		switch(tipo){
 			case 'entrante':
-				menu.modificarEntrante(plato)
+				let menu = Menu.updateOne({_id: ObjectId(id)}, {$set: {Entrante: plato}})
+				  menu.exec(function(err,menu){
+				    if(!err){
+				      res.status(200).json(menu)
+				    }else{
+				      res.status(500).send(err)
+				    }
+				  })
 			break;
 			case 'principal':
-				menu.modificarEntrante(plato)
+				let menu = Menu.updateOne({_id: ObjectId(id)}, {$set: {Principal: plato}})
+				  menu.exec(function(err,menu){
+				    if(!err){
+				      res.status(200).json(menu)
+				    }else{
+				      res.status(500).send(err)
+				    }
+				  })
 			break;
 			case 'postre':
-				menu.modificarEntrante(plato)
+				let menu = Menu.updateOne({_id: ObjectId(id)}, {$set: {Postre: plato}})
+				  menu.exec(function(err,menu){
+				    if(!err){
+				      res.status(200).json(menu)
+				    }else{
+				      res.status(500).send(err)
+				    }
+				  })
 			break;
 		}
-		res.send( {"Plato modificado": plato } );
              } catch (error){
 		//Error 400: el plato indicado no es de ese tipo
 		res.status(400).send( error.message )
  	     }
     }else{
-	res.status(404).send( "El id no corresponde a ningún menú o el tipo no es correcto" )	
+	res.status(404).send( "El tipo no es correcto" )	
     } 
 } );
 
 /* Permite borrar el menú seleccionado, reemplazando su posición para no cambiar los ids */
 app.delete('/menu/:id', function(req, res) {
-    var id = req.params.id
-    var menu = pedidos[id]
-    if( menu){
-        pedidos.splice(id, 1, "Borrado")
-    	res.send( {'Menu borrado': id } );
-    }else{
-	res.status(400).send( "El id no corresponde a ningún menú." )	
-    }
+    let id = req.params.id
+    let menu = Menu.deleteOne({_id: ObjectId(id)})
+    menu.exec(function(err,menu){
+	if(!err){
+		res.status(200).json(menu)
+	}else{
+		res.status(500).send(err)
+	}
+    })
 });
 
 
 
 /* Permite la consulta del precio de todos los platos */
 app.get('/carta/precios', function(req, res) {
-	res.send( {'Entrantes': carta.consultarPrecioEntrantes(), 'Principales': carta.consultarPrecioPlatos(), 'Postres': carta.consultarPrecioPostres() }  );	
+	let entrantes = await Plato.find({Tipo: "Entrante"});
+	res.status(200).json(entrantes)
 
 });
 /* Permite la consulta del precio de los platos */
 /* Puede indicar el tipo de los platos de los que quiere saber el precio*/
-app.get('/carta/precios/:tipo', function(req, res) {
-   var tipo = req.params.tipo
+app.get('/carta/precios/:tipo', async function(req, res) {
+   let tipo = req.params.tipo
    if(tipo=='entrantes' || tipo=='principales' || tipo=='postres'){
 	switch(tipo){
 		case 'entrantes':
-			res.send( {"Precio entrantes": carta.consultarPrecioEntrantes() } );
+			let entrantes = await Plato.find({Tipo: "Entrante"});
+			res.status(200).json(entrantes)
 		break;
 		case 'principales':
-			res.send( {"Precio principales": carta.consultarPrecioPlatos() } );
+			let principales = await Plato.find({Tipo: "Principal"});
+			res.status(200).json(principales)
 		break;
 		case 'postres':
-			res.send( {"Precio postres": carta.consultarPrecioPostres() } );
+			let postres = await Plato.find({Tipo: "Postre"});
+			res.status(200).json(postres)
 		break;
 	    }
     } else {
-        res.status(400).send("Error en los argumentos.Tipo no encontrado")
+        res.status(400).send("Error en los argumentos. Tipo no encontrado")
     }
 });
 
@@ -139,12 +202,13 @@ app.get('/carta/precios/:tipo', function(req, res) {
 app.get('/carta/precios/plato/:plato', function(req, res) {
    var plato = req.params.plato
 	try{
-	    res.send( {"Precio": carta.consultarPrecioPlato(plato) } );       
+		let plato = await Plato.find({Plato: plato});
+		res.status(200).json(principales)      
         } catch (error){
             res.status(404).send( error.message )
         }
 });
-
+*/
 
 app.use(function(err, req, res, next){
    res.status(500).send(err.message);
