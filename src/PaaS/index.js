@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
-const Menu = require('./menu')
 var body_parser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config({ path: '../.env' })
+let Menu = require('./models/MenuSchema')
 
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended:true}));
@@ -17,43 +17,49 @@ app.use(function timeLog(req, res, next) {
 });
 
 
-// Devuelve un mensaje de bienvenida
-app.get('/', function(req, res) {
-  res.send( JSON.stringify("Bienvenido a la paǵina de inicio de CloudFood") )
-});
+app.get('/status', function(req,res){
+  res.status(200).json({status:"OK"});
+})
 
 /* Permite la consulta de todos los platos o de platos según su tipo.*/
 app.get('/carta', function(req, res) {
-	res.send({'Entrantes': carta.mostrarEntrantes(), 'Principales': carta.mostrarPlatos(), 'Postres': carta.mostrarPostres()});
+	let carta = Menu.find()
+	res.status(200).json(carta)
 	
 });
 
 app.get('/carta/entrantes', function(req, res) {
-	res.send({'Entrantes': carta.mostrarEntrantes() } );
+	let entrantes = Menu.find({Entrante})
+	res.status(200).json(entrantes)
+	
 });
 
 app.get('/carta/principales', function(req, res) {
-    res.send({'Principales': carta.mostrarPlatos() } );
+	let principales = Menu.find({Principal})
+	res.status(200).jsonprincipales)
 });
 
 app.get('/carta/postres', function(req, res) {
-    res.send({'Postres': carta.mostrarPostres() } );
+	let postres = Menu.find({Postre})
+	res.status(200).json(entrantes)
 });
 
 /* Permite la creacion de un menu */
-app.put('/menu/:entrante/:plato/:postre', function(req, res) {
-    var entrante = req.params.entrante
-    var plato = req.params.plato
-    var postre = req.params.postre
-    try{
-	  let menu = new Menu();
-          menu.setPlatos(entrante, plato, postre)
-	  pedidos.push(menu); 
-          res.status(201).send( {'Menu añadido': menu.mostrarMenuSeleccionado(), 'ID': pedidos.indexOf(menu)  } );
-    } catch (error){
-            res.status(400).send( error.message )
-    }
-           
+app.post('/menu', function(req, res) {
+	 const menu = new Menu({
+	    Entrante: req.body.entrante,
+	    Principal: req.body.principal,
+	    Postre: req.body.postre
+	  })
+	  try{
+	    const addmenu = await menu.save()
+	    res.set('Location',`/item/${addMenu.type}`)
+	    res.status(201).json(addmenu)
+	  }catch(err){
+	    res.status(400)
+	  }
+}
+          
 });
 
 /* Permite consultar el menu seleccionado */
