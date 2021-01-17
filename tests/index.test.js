@@ -3,15 +3,6 @@ const request = require('supertest');
 app = require('../src/index.js');
 let heroku = "https://cloudfood.herokuapp.com"
 
-/* EStado */
-describe('GET /status', () => {
-  it('Testando consulta estado', (done) => {
-    request(heroku)
-      .get('/status')
-      .expect('Content-Type', /json/)
-      .expect(200, done);
-  })
-})
 
 /* Consulta de platos */
 describe("GET de la carta", function() {
@@ -19,25 +10,25 @@ describe("GET de la carta", function() {
     request(heroku)
       .get('/carta')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
   it("Testeando consulta de entrantes", function(done) {
     request(heroku)
       .get('/carta/entrantes')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
   it("Testeando consulta de platos principales", function(done) {
     request(heroku)
       .get('/carta/principales')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
   it("Testeando consulta de postres", function(done) {
     request(heroku)
       .get('/carta/postres')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
 });
 
@@ -49,7 +40,7 @@ describe("POST /menu", function() {
       .post('/menu')
       .set('Accept', 'application/json')
       .send({entrante:'Sopa', principal:'Patatas',postre: 'Brownie'})
-      .expect(500,done);
+      .expect(500,done());
   });
   it("Testeando creación de un menú", function(done) {
     request(heroku)
@@ -57,7 +48,7 @@ describe("POST /menu", function() {
       .set('Accept', 'application/json')
       .send({entrante:'Sopa', principal:'Carne',postre: 'Brownie'})
       .expect('Content-Type', /json/)
-      .expect(201,done);
+      .expect(201,done());
   });
 });
 
@@ -68,18 +59,18 @@ describe("GET /carta/precios", function() {
     request(heroku)
       .get('/carta/precios')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
   it("Testeando consulta de precios de entrantes ", function(done) {
     request(heroku)
       .get('/carta/precios/entrantes')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
   it("Testeando consulta de precios de tipo que no existe", function(done) {
     request(heroku)
       .get('/carta/precios/aperitivo')
-      .expect(400,done);
+      .expect(400,done());
   });
 });
 
@@ -89,6 +80,6 @@ describe("GET /carta/precios/:plato", function() {
     request(heroku)
       .get('/carta/precios/plato/Carne')
       .expect('Content-Type', /json/)
-      .expect(200,done);
+      .expect(200,done());
   });
 });

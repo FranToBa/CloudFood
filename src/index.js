@@ -6,6 +6,10 @@ require('dotenv').config()
 let Menu = require('./models/bdmenus')
 let Plato = require('./models/bdplatos')
 
+const port = process.env.PORT || 8080;
+app.listen(port)
+
+
 app.use(body_parser.text());
 app.use(body_parser.urlencoded({extended:true}));
 app.use(body_parser.json({ type: 'application/json'}));
@@ -185,11 +189,6 @@ app.get('/carta/precios/plato/:plato', async function(req, res) {
 app.use(function(err, req, res, next){
    res.status(500).send(err.message);
   });
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-    console.log('Escuchando el puerto ' + port);
-})
 
 
 module.exports = app
