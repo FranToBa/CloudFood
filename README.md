@@ -23,18 +23,16 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 - docker run -t -v `pwd`:/test frantoba/cloudfood
 ~~~
 
-## Microservicios
+## PaaS
 
-### Reenvio
+- [Descripción y justificación](./docs/just_paas.md) de las herramientas usadas para desplegar la aplicación en en PaaS.
 
-- 1- Justificación y usa del framework elegido. Consultar esta [documentación](./docs/express.md). 
-- 2-3- [Documentación](./docs/microapi.md) sobre la [API](./src/index.js) creada y uso de middleware.
-- 4- [Documentación](./docs/microapi_test.md) sobre los [tests](./tests/index.test.js).
+- [Descripción correcta de la configuración](./docs/confi_paas.md) para despliegue automático, desde el repositorio o desde el sistema de integración continua.
 
-- Avance de código:
-	- Se ha modificado la clase [menu.js](./src/menu.js) creando un constructor al que no haya que indicarle los platos, añadiendo setters para los platos ([Issue #51](https://github.com/FranToBa/CloudFood/issues/51)).
-	- Se ha añadido un nuevo método que devuelve el tipo de un plato específico.
-	- Se ha añadido un nuevo método relacionado con la [HU06](https://github.com/FranToBa/CloudFood/issues/22) que devuelve el precio de un plato específico, usando el método anterior sobre el tipo de plato y devolviendo su precio ([Issue #46](https://github.com/FranToBa/CloudFood/issues/46)).
+- Funcionamiento correcto del despliegue en el PaaS (no sólo el status). Es decir, no se puede devolver ningún status 500.
+- Buenas prácticas en el diseño del API, incluyendo su correspondencia correcta con diferentes HUs.
+
+- Uso correcto de bases de datos y logs dentro del PaaS, incluyendo su justificación y pruebas de prestaciones, así como avance general y grado de terminación de la aplicación. Consultar [aquí](./docs/confi_paas.md)
 
 
 
@@ -45,6 +43,8 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 - [Índice sobre información de DOCKER](./docs/indicedocker.md).
 - [Integración continua](./docs/icont.md)
 - [Serverless](./docs/serverless.md) 
+- [Serverless](./docs/microservicios.md) 
+
 
 #### Documentación
 - [Configuración incial de git](./docs/configuracion_inicial.md).
