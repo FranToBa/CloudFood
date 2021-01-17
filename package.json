@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jest --testEnvironment=node"
+    "test": "jest --testEnvironment=node --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",
