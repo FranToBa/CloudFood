@@ -22,7 +22,6 @@ Es uno de los PaaS mas usados. Cuenta con 1504 company stacks y 961 developers s
 - Cuenta con un mayor número de add-ons que OpenShift.
 - Cuenta con una herramienta de lineas de comandos para la gestión: Heroku toolbelt.
 
-Mi elección será Heroku, ya que cubre las necesidades para nuestra aplicación y además siguiendo la documentación, podemos iniciarla de forma sencilla. Además es la más usada por empresas, de forma que nos será más útil tener conocimiento sobre ella para nuestro futuro. 
-
+Mi elección será Heroku, ya que cubre las necesidades para nuestra aplicación y además siguiendo la documentación, podemos iniciarla de forma sencilla. Además es la más usada por empresas, de forma que nos será más útil tener conocimiento sobre ella para nuestro futuro.
 
 ## Configuración para despliegue automático con Heroku
