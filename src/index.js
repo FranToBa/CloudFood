@@ -2,30 +2,17 @@ const express = require('express')
 const app = express()
 var body_parser = require('body-parser');
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '../../.env' })
+require('dotenv').config()
 let Menu = require('./models/bdmenus')
 let Plato = require('./models/bdplatos')
-
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-    console.log('Escuchando el puerto ' + port);
-})
-
 
 app.use(body_parser.text());
 app.use(body_parser.urlencoded({extended:true}));
 app.use(body_parser.json({ type: 'application/json'}));
 
-//mongoose.connect(`${process.env.CONNECTION}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//const mongoose = require("mongoose");
 const url = process.env.CONNECTION
-
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(db => console.log("db connected"))
-    .catch(err => console.log(err));
-
 var conn = mongoose.connection;
 
 
@@ -198,6 +185,11 @@ app.get('/carta/precios/plato/:plato', async function(req, res) {
 app.use(function(err, req, res, next){
    res.status(500).send(err.message);
   });
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log('Escuchando el puerto ' + port);
+})
 
 
 module.exports = app
