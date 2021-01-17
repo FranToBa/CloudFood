@@ -25,3 +25,9 @@ Es uno de los PaaS mas usados. Cuenta con 1504 company stacks y 961 developers s
 Mi elección será Heroku, ya que cubre las necesidades para nuestra aplicación y además siguiendo la documentación, podemos iniciarla de forma sencilla. Además es la más usada por empresas, de forma que nos será más útil tener conocimiento sobre ella para nuestro futuro.
 
 ## Configuración para despliegue automático con Heroku
+
+Para la configuración de Heroku usaré los pasos seguidos en los ejercicios de autoevaluación. Una vez realizada toda la instalación de heroku, usamos el comando ~~~ heroku create ~~~ para la aplicación. Para nuestro despligue usaremos el archivo [Procfile](../Procfile) en el que indicaremos el archivo que tiene que ejecutarse. Para realizar el despliegue solo tenemos que ejecutar ~~~ git push heroku master ~~~.
+
+Por otro lado, Heroku nos permite enlazar nuestro repositorio de GitHub de forma que cada vez que hagamos un push se reconstruya y se vuelva a desplegar nuestra app. También nos ofrece la opción de asegurarnos de que se han pasado los tests para realizar el despliegue.
+
+![](./imagenes/aut_heroku.png)
