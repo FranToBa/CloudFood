@@ -4,3 +4,11 @@ test: tests/menu.test.js
 taskfile: package.json
 URL: https://cloud-food.vercel.app/api/seleccionmenu.js?numMenu=1
 make: grunt
+PaaS: https://cloudfood.herokuapp.com
+recurso:
+  nombre: menu
+  metodo: POST
+  payload:
+    entrante: "Sopa"
+    principal: "Carne"
+    postre: "Brownie"
