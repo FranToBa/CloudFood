@@ -68,7 +68,7 @@ app.post('/menu', async function(req, res) {
 		  })
 		try{
 		    const addMenu = await menu.save()
-		    res.set('Location',`/menu/${addMenu._id}`)
+		    //res.set('Location',`/menu/${addMenu._id}`)
 		    res.status(201).json(addMenu)
 		}catch(err){
 		    res.status(500).json(err)
