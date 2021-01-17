@@ -25,12 +25,9 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 
 ## PaaS
 
-- [Descripción y justificación](./docs/just_paas.md) de las herramientas usadas para desplegar la aplicación en en PaaS.
+- [Descripción y justificación](./docs/just_paas.md) de las herramientas usadas para desplegar la aplicación en en PaaS y descripción correcta de la configuración para despliegue automático, desde el repositorio o desde el sistema de integración continua.
 
-- [Descripción correcta de la configuración](./docs/confi_paas.md) para despliegue automático, desde el repositorio o desde el sistema de integración continua.
-
-- Funcionamiento correcto del despliegue en el PaaS (no sólo el status). Es decir, no se puede devolver ningún status 500.
-- Buenas prácticas en el diseño del API, incluyendo su correspondencia correcta con diferentes HUs.
+- Funcionamiento correcto del despliegue en el PaaS (no sólo el status). Es decir, no se puede devolver ningún status 500. - Buenas prácticas en el diseño del API, incluyendo su correspondencia correcta con diferentes HUs. Consultar 
 
 - Uso correcto de bases de datos y logs dentro del PaaS, incluyendo su justificación y pruebas de prestaciones, así como avance general y grado de terminación de la aplicación. Consultar [aquí](./docs/confi_paas.md)
 
@@ -42,8 +39,8 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 - [Justificación de gestores](./docs/just_her.md).
 - [Índice sobre información de DOCKER](./docs/indicedocker.md).
 - [Integración continua](./docs/icont.md)
-- [Serverless](./docs/serverless.md) 
-- [Serverless](./docs/microservicios.md) 
+- [Serverless](./docs/serverless.md)
+- [Serverless](./docs/microservicios.md)
 
 
 #### Documentación
@@ -63,5 +60,3 @@ Para la ejecución de los tests a partir de un contenedor debemos:
 
 ## Autor
 [Francisco Javier Torres Barea](https://github.com/FranToBa)
-
-
