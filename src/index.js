@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: '../../.env' })
 let Menu = require('./models/bdmenus')
 let Plato = require('./models/bdplatos')
+ObjectId = require('mongodb').ObjectID
 
 app.use(body_parser.text());
 app.use(body_parser.urlencoded({extended:true}));
@@ -29,12 +30,9 @@ app.get('/status', function(req,res){
 
 /* Permite la consultar los pedidos realizados.*/
 app.get('/carta', async function(req, res) {
-	try{
-		let carta = await Plato.find({})
-		res.status(200).json(carta)
-}catch(error){
-	res.status(400).send(error)
-}
+	let carta = await Plato.find({})
+	res.status(200).json(carta)
+
 	
 });
 
@@ -64,31 +62,15 @@ app.post('/menu', async function(req, res) {
 		  })
 		try{
 		    const addMenu = await menu.save()
-		    res.set('Location',`/menu/${addMenu.type}`)
+		    res.set('Location',`/menu/${addMenu._id}`)
 		    res.status(201).json(addMenu)
 		}catch(err){
-		    res.status(400).json(err)
+		    res.status(500).json(err)
 		}
 	}catch(err){
 		res.status(400).json(err)
 	}
 });
-
-/* Permite la creacion de un menu */
-app.post('/plato', async function(req, res) {
-	const plato = new Plato({
-		Plato: req.body.plato, 
-		Tipo: req.body.tipo
-	  })
-	try{
-	    const addMenu = await plato.save()
-	    //res.set('Location',`/menu/${addMenu.type}`)
-	    res.status(201).json(addMenu)
-	}catch(err){
-	    res.status(400).json(err)
-	}
-});
-
 
 
 
@@ -111,43 +93,33 @@ app.post('/menu/:id', function(req, res) {
     var plato = req.body.plato
     var tipo = req.body.tipo  
     if(tipo=='entrante' || tipo=='principal' || tipo=='postre'){
-	try{
 		switch(tipo){
 			case 'entrante':
-				let menu = Menu.updateOne({_id: ObjectId(id)}, {$set: {Entrante: plato}})
-				  menu.exec(function(err,menu){
-				    if(!err){
+				try{
+				     let menu = Menu.findByIdAndUpdate({id},{Entrante: plato})
 				      res.status(200).json(menu)
-				    }else{
+				}catch(err){
 				      res.status(500).send(err)
-				    }
-				  })
+				 }
+
 			break;
 			case 'principal':
-				let menu = Menu.updateOne({_id: ObjectId(id)}, {$set: {Principal: plato}})
-				  menu.exec(function(err,menu){
-				    if(!err){
+				try{
+				     let menu = Menu.findByIdAndUpdate({id},{Principal: plato})
 				      res.status(200).json(menu)
-				    }else{
+				}catch(err){
 				      res.status(500).send(err)
-				    }
-				  })
+				 }
 			break;
 			case 'postre':
-				let menu = Menu.updateOne({_id: ObjectId(id)}, {$set: {Postre: plato}})
-				  menu.exec(function(err,menu){
-				    if(!err){
+				try{
+				     let menu = Menu.findByIdAndUpdate({id},{Postre: plato})
 				      res.status(200).json(menu)
-				    }else{
+				}catch(err){
 				      res.status(500).send(err)
-				    }
-				  })
+				 }
 			break;
 		}
-             } catch (error){
-		//Error 400: el plato indicado no es de ese tipo
-		res.status(400).send( error.message )
- 	     }
     }else{
 	res.status(404).send( "El tipo no es correcto" )	
     } 
@@ -156,24 +128,22 @@ app.post('/menu/:id', function(req, res) {
 /* Permite borrar el menú seleccionado, reemplazando su posición para no cambiar los ids */
 app.delete('/menu/:id', function(req, res) {
     let id = req.params.id
-    let menu = Menu.deleteOne({_id: ObjectId(id)})
-    menu.exec(function(err,menu){
-	if(!err){
-		res.status(200).json(menu)
-	}else{
-		res.status(500).send(err)
-	}
-    })
+    try{
+    	let menu = Menu.findByIdAndRemove(id)
+    	res.status(200).json({Borrado: id})
+     }catch(err){
+	res.status(500).send(err)
+     }
 });
 
 
 
 /* Permite la consulta del precio de todos los platos */
-app.get('/carta/precios', function(req, res) {
-	let entrantes = await Plato.find({Tipo: "Entrante"});
-	res.status(200).json(entrantes)
-
+app.get('/carta/precios',async function(req, res) {
+	let carta = await Plato.find({})
+	res.status(200).json(carta)
 });
+
 /* Permite la consulta del precio de los platos */
 /* Puede indicar el tipo de los platos de los que quiere saber el precio*/
 app.get('/carta/precios/:tipo', async function(req, res) {
@@ -199,16 +169,16 @@ app.get('/carta/precios/:tipo', async function(req, res) {
 });
 
 /* Permite la consulta del precio de un plato especifico */
-app.get('/carta/precios/plato/:plato', function(req, res) {
-   var plato = req.params.plato
+app.get('/carta/precios/plato/:plato', async function(req, res) {
+       var plato = req.params.plato
 	try{
-		let plato = await Plato.find({Plato: plato});
-		res.status(200).json(principales)      
+		let plat = await Plato.find({Plato: plato});
+		res.status(200).json(plat)      
         } catch (error){
-            res.status(404).send( error.message )
+            res.status(400).send( error.message )
         }
 });
-*/
+
 
 app.use(function(err, req, res, next){
    res.status(500).send(err.message);
