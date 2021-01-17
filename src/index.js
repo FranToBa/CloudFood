@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: '../../.env' })
 let Menu = require('./models/bdmenus')
 let Plato = require('./models/bdplatos')
-ObjectId = require('mongodb').ObjectID
 
 app.use(body_parser.text());
 app.use(body_parser.urlencoded({extended:true}));
@@ -33,7 +32,7 @@ app.get('/carta', async function(req, res) {
 	let carta = await Plato.find({})
 	res.status(200).json(carta)
 
-	
+
 });
 
 app.get('/carta/entrantes',async function(req, res) {
@@ -56,8 +55,8 @@ app.get('/carta/postres', async function(req, res) {
 app.post('/menu', async function(req, res) {
 	try{
 		const menu = new Menu({
-			Entrante: req.body.entrante, 
-			Principal: req.body.principal, 
+			Entrante: req.body.entrante,
+			Principal: req.body.principal,
 			Postre: req.body.postre
 		  })
 		try{
@@ -91,7 +90,7 @@ app.get('/menu/:id', async function(req, res) {
 app.post('/menu/:id', function(req, res) {
     var id = req.params.id
     var plato = req.body.plato
-    var tipo = req.body.tipo  
+    var tipo = req.body.tipo
     if(tipo=='entrante' || tipo=='principal' || tipo=='postre'){
 		switch(tipo){
 			case 'entrante':
@@ -121,8 +120,8 @@ app.post('/menu/:id', function(req, res) {
 			break;
 		}
     }else{
-	res.status(404).send( "El tipo no es correcto" )	
-    } 
+	res.status(404).send( "El tipo no es correcto" )
+    }
 } );
 
 /* Permite borrar el menú seleccionado, reemplazando su posición para no cambiar los ids */
@@ -173,7 +172,7 @@ app.get('/carta/precios/plato/:plato', async function(req, res) {
        var plato = req.params.plato
 	try{
 		let plat = await Plato.find({Plato: plato});
-		res.status(200).json(plat)      
+		res.status(200).json(plat)
         } catch (error){
             res.status(400).send( error.message )
         }
